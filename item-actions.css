@@ -47,6 +47,55 @@
   box-shadow: 0 16px 30px rgba(18, 140, 67, 0.27);
 }
 
+.item-card--sold-enhanced {
+  cursor: default;
+  opacity: 0.78;
+  border-color: #d6d2cb;
+  box-shadow: 0 1px 0 rgba(32, 36, 33, 0.03), 0 6px 18px rgba(32, 36, 33, 0.06);
+}
+
+.item-card--sold-enhanced:hover {
+  transform: none;
+  border-color: #d6d2cb;
+  box-shadow: 0 1px 0 rgba(32, 36, 33, 0.03), 0 6px 18px rgba(32, 36, 33, 0.06);
+}
+
+.item-card--sold-enhanced .item-card__image img {
+  filter: grayscale(1) contrast(0.92);
+  transform: none;
+}
+
+.item-card--sold-enhanced .price {
+  color: var(--sold);
+  text-decoration: line-through;
+}
+
+.item-card--sold-enhanced .details-link {
+  display: none;
+}
+
+.sold-home-badge {
+  position: absolute;
+  z-index: 4;
+  inset-block-start: 12px;
+  inset-inline-start: 12px;
+  padding: 6px 11px;
+  color: #17643c;
+  background: #e3f5e9;
+  border: 1px solid rgba(23, 100, 60, 0.14);
+  border-radius: 999px;
+  box-shadow: 0 5px 14px rgba(23, 100, 60, 0.12);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.button--sold,
+.dialog-actions .button--sold {
+  color: #696864;
+  background: #e6e3dd;
+  box-shadow: none;
+}
+
 @media (max-width: 650px) {
   .item-card__whatsapp {
     min-height: 44px;

@@ -5,9 +5,11 @@ const ITEM_WHATSAPP_ICON = `
     <path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 1.8a8.2 8.2 0 1 1-4.2 15.3l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 0 1 12 3.8zm-3.1 4c-.2 0-.5 0-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.3 3.9 2.1.9 2.6.7 3 .7.5 0 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.2-1.5-.7c-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1-.2-.1-.9-.3-1.8-1.1-.7-.6-1.1-1.3-1.2-1.5-.1-.2 0-.3.1-.5l.4-.5c.1-.2.1-.3.2-.4v-.4L10 8.2c-.2-.4-.4-.4-.6-.4h-.5z"/>
   </svg>`;
 
-window.addEventListener("DOMContentLoaded", initializeItemWhatsappActions);
+window.addEventListener("DOMContentLoaded", initializeItemEnhancements);
 
-async function initializeItemWhatsappActions() {
+async function initializeItemEnhancements() {
+  showSoldItemsByDefault();
+
   try {
     const [siteResponse, itemsResponse] = await Promise.all([
       fetch("data/site.json", { cache: "no-store" }),
@@ -18,9 +20,10 @@ async function initializeItemWhatsappActions() {
 
     const site = await siteResponse.json();
     const items = await itemsResponse.json();
-    const phone = String(site.whatsapp || "").replace(/\D/g, "");
-    if (!/^\d{8,15}$/.test(phone) || !Array.isArray(items)) return;
+    if (!Array.isArray(items)) return;
 
+    const phone = String(site.whatsapp || "").replace(/\D/g, "");
+    const validPhone = /^\d{8,15}$/.test(phone) ? phone : "";
     const itemsByTitle = new Map(
       items
         .filter((item) => item && item.title)
@@ -28,8 +31,8 @@ async function initializeItemWhatsappActions() {
     );
 
     const enhance = () => {
-      enhanceCards(itemsByTitle, phone);
-      enhanceDialog(items, phone);
+      enhanceCards(itemsByTitle, validPhone);
+      enhanceDialog(items, validPhone);
     };
 
     enhance();
@@ -42,17 +45,35 @@ async function initializeItemWhatsappActions() {
       attributeFilter: ["href", "aria-disabled", "open"]
     });
   } catch (error) {
-    console.error("Could not initialize item WhatsApp actions", error);
+    console.error("Could not initialize item enhancements", error);
   }
+}
+
+function showSoldItemsByDefault() {
+  const toggle = document.getElementById("availableOnlyToggle");
+  if (!toggle) return;
+  toggle.checked = false;
+  toggle.dispatchEvent(new Event("change", { bubbles: true }));
 }
 
 function enhanceCards(itemsByTitle, phone) {
   document.querySelectorAll(".item-card").forEach((card) => {
-    if (card.querySelector(".item-card__whatsapp")) return;
-
     const title = card.querySelector("h3")?.textContent?.trim();
     const item = itemsByTitle.get(title);
-    if (!item || item.status === "sold") return;
+    if (!item) return;
+
+    updateCardAvailability(card, item);
+
+    if (item.status === "sold") {
+      enhanceSoldCard(card, item);
+      card.querySelector(".item-card__whatsapp")?.remove();
+      return;
+    }
+
+    card.classList.remove("item-card--sold-enhanced");
+    if (card.hasAttribute("aria-disabled")) card.removeAttribute("aria-disabled");
+
+    if (!phone || card.querySelector(".item-card__whatsapp")) return;
 
     const link = document.createElement("a");
     link.className = "item-card__whatsapp";
@@ -66,36 +87,119 @@ function enhanceCards(itemsByTitle, phone) {
       : "אני רוצה! בוואטסאפ";
 
     link.innerHTML = `${ITEM_WHATSAPP_ICON}<span>${label}</span>`;
-
     link.addEventListener("click", (event) => event.stopPropagation());
     link.addEventListener("keydown", (event) => event.stopPropagation());
-
     card.querySelector(".item-card__body")?.appendChild(link);
   });
 }
 
-function enhanceDialog(items, phone) {
-  const button = document.getElementById("dialogWhatsapp");
-  if (!button || button.getAttribute("aria-disabled") === "true") return;
+function updateCardAvailability(card, item) {
+  const value = card.querySelector(".item-card__availability strong");
+  const nextText = getAvailabilityText(item);
+  if (value && value.textContent !== nextText) value.textContent = nextText;
+}
 
+function enhanceSoldCard(card, item) {
+  card.classList.add("item-card--sold-enhanced");
+  card.tabIndex = -1;
+  if (card.getAttribute("aria-disabled") !== "true") card.setAttribute("aria-disabled", "true");
+  card.setAttribute("aria-label", `${item.title} — נמכר ומצא בית חדש`);
+
+  if (!card.dataset.soldInteractionBlocked) {
+    const blockInteraction = (event) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    };
+    card.addEventListener("click", blockInteraction, true);
+    card.addEventListener("keydown", blockInteraction, true);
+    card.dataset.soldInteractionBlocked = "true";
+  }
+
+  const image = card.querySelector(".item-card__image");
+  if (image && !image.querySelector(".sold-home-badge")) {
+    const badge = document.createElement("span");
+    badge.className = "sold-home-badge";
+    badge.textContent = "מצא בית חדש! 🎉";
+    image.appendChild(badge);
+  }
+}
+
+function enhanceDialog(items, phone) {
   const match = location.hash.match(/^#item=(.+)$/);
   if (!match) return;
 
   const id = decodeURIComponent(match[1]);
   const item = items.find((candidate) => String(candidate.id) === id);
-  if (!item || item.status === "sold") return;
+  if (!item) return;
 
-  const expectedHref = createItemWhatsappLink(phone, item);
-  if (button.getAttribute("href") !== expectedHref) {
-    button.setAttribute("href", expectedHref);
+  updateDialogAvailability(item);
+
+  const button = document.getElementById("dialogWhatsapp");
+  if (!button) return;
+
+  if (item.status === "sold") {
+    if (button.getAttribute("href") !== "#") button.setAttribute("href", "#");
+    if (button.getAttribute("aria-disabled") !== "true") button.setAttribute("aria-disabled", "true");
+    if (button.textContent !== "מצא בית חדש 🎉") button.textContent = "מצא בית חדש 🎉";
+    button.classList.add("button--sold");
+    return;
   }
 
-  const label = item.status === "reserved"
+  button.classList.remove("button--sold");
+  if (!phone) return;
+
+  const expectedHref = createItemWhatsappLink(phone, item);
+  const expectedLabel = item.status === "reserved"
     ? "לבדוק אם התפנה בוואטסאפ"
     : "אני רוצה! בוואטסאפ";
 
-  if (button.textContent !== label) button.textContent = label;
+  if (button.hasAttribute("aria-disabled")) button.removeAttribute("aria-disabled");
+  if (button.getAttribute("href") !== expectedHref) button.setAttribute("href", expectedHref);
+  if (button.textContent !== expectedLabel) button.textContent = expectedLabel;
   button.setAttribute("aria-label", `פתיחת וואטסאפ לגבי ${item.title}`);
+}
+
+function updateDialogAvailability(item) {
+  document.querySelectorAll("#dialogFacts .fact").forEach((fact) => {
+    if (fact.querySelector("dt")?.textContent?.trim() !== "זמינות") return;
+    const value = fact.querySelector("dd");
+    const nextText = getAvailabilityText(item);
+    if (value && value.textContent !== nextText) value.textContent = nextText;
+  });
+}
+
+function getAvailabilityText(item) {
+  if (item.status === "sold") return "לא זמין";
+
+  const availableFrom = parseDateOnly(item.availableFrom);
+  const dateText = availableFrom ? formatDateOnly(availableFrom) : "";
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const futureDate = availableFrom && availableFrom > today;
+
+  if (item.status === "reserved") {
+    return futureDate
+      ? `אם יתפנה — החל מ־${dateText}`
+      : "כרגע שמור — אפשר לבדוק אם התפנה";
+  }
+
+  return futureDate ? `זמין החל מ־${dateText}` : "זמין מיידית";
+}
+
+function parseDateOnly(value) {
+  const match = String(value || "").match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!match) return null;
+
+  const date = new Date(Number(match[1]), Number(match[2]) - 1, Number(match[3]));
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function formatDateOnly(date) {
+  return new Intl.DateTimeFormat("he-IL", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric"
+  }).format(date);
 }
 
 function createItemWhatsappLink(phone, item) {
