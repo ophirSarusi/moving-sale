@@ -3,15 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="פריטים למכירה לקראת מעבר דירה ברחובות">
+  <meta name="description" content="מכירת מעבר דירה ברחובות — רהיטים, מוצרי חשמל ועוד דברים טובים לבית">
   <meta name="theme-color" content="#f6f3ed">
-  <title>מכירת מעבר דירה</title>
+  <meta property="og:title" content="מכירת מעבר דירה ברחובות 🏠">
+  <meta property="og:description" content="דברים טובים ושמורים מחפשים בית חדש. אולי משהו מהם בדיוק בשבילכם 😊">
+  <meta property="og:type" content="website">
+  <title>מכירת מעבר דירה ברחובות 🏠</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=3">
-  <script src="app.js?v=3" defer></script>
+  <link rel="stylesheet" href="styles.css?v=4">
+  <style>
+    body { font-family: Rubik, "Noto Sans Hebrew", "Segoe UI", Arial, sans-serif; }
+    .pickup-line { margin: 10px 0 0; color: var(--muted); font-size: .94rem; }
+  </style>
+  <script src="app.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#itemsGrid">דלגו לפריטים</a>
@@ -23,7 +30,7 @@
         <span id="brandText">מכירת מעבר דירה</span>
       </a>
       <a id="generalWhatsapp" class="button button--quiet is-hidden" href="#" target="_blank" rel="noreferrer">
-        יצירת קשר
+        דברו איתנו
       </a>
     </div>
   </header>
@@ -31,14 +38,15 @@
   <main>
     <section class="hero shell" aria-labelledby="siteTitle">
       <div class="hero__copy">
-        <p id="heroBadge" class="eyebrow">איסוף עצמי מרחובות</p>
-        <h1 id="siteTitle">מכירת מעבר דירה ברחובות</h1>
-        <p id="siteSubtitle" class="hero__subtitle">רהיטים ופריטים לבית במצב טוב שמחפשים בית חדש. המחיר והזמינות מופיעים בכל פריט.</p>
+        <p id="heroBadge" class="eyebrow">רהיטים, מוצרי חשמל ועוד דברים טובים לבית</p>
+        <h1 id="siteTitle">מכירת מעבר דירה ברחובות 🏠</h1>
+        <p id="siteSubtitle" class="hero__subtitle">אנחנו עוברים דירה, והרבה דברים טובים ושמורים מחפשים בית חדש. אולי משהו מהם בדיוק בשבילכם 😊</p>
+        <p class="pickup-line">📍 איסוף עצמי מרחובות בתיאום מראש · פירוק והובלה באחריות הקונה</p>
         <p id="announcement" class="announcement is-hidden"></p>
       </div>
       <div class="hero__actions">
-        <a href="#catalog" class="button button--primary">לצפייה בפריטים</a>
-        <button id="sharePageButton" class="button button--secondary" type="button">שיתוף העמוד</button>
+        <a href="#catalog" class="button button--primary">לכל הפריטים</a>
+        <button id="sharePageButton" class="button button--secondary" type="button">שיתוף</button>
       </div>
     </section>
 
@@ -48,13 +56,13 @@
           <label class="search">
             <span class="sr-only">חיפוש פריטים</span>
             <span class="search__icon" aria-hidden="true">⌕</span>
-            <input id="searchInput" type="search" placeholder="חיפוש פריט..." autocomplete="off">
+            <input id="searchInput" type="search" placeholder="מחפשים משהו מסוים?" autocomplete="off">
           </label>
 
           <label class="toggle">
             <input id="availableOnlyToggle" type="checkbox" checked>
             <span class="toggle__track" aria-hidden="true"><span class="toggle__thumb"></span></span>
-            <span>זמינים בלבד</span>
+            <span>רק מה שעדיין זמין</span>
           </label>
         </div>
 
@@ -62,10 +70,7 @@
       </section>
 
       <div class="catalog__heading">
-        <div>
-          <p class="section-kicker">הפריטים</p>
-          <h2>מה מוצע למכירה</h2>
-        </div>
+        <h2>כל הפריטים</h2>
         <p id="resultsCount" class="results-count" aria-live="polite"></p>
       </div>
 
@@ -78,22 +83,22 @@
       <section id="itemsGrid" class="items-grid is-hidden" aria-label="רשימת פריטים"></section>
 
       <section id="emptyState" class="empty-state is-hidden">
-        <div class="empty-state__icon" aria-hidden="true">⌕</div>
-        <h2>לא נמצאו פריטים</h2>
-        <p>נסו לשנות את החיפוש או להציג גם פריטים שמורים ונמכרו.</p>
-        <button id="clearFiltersButton" class="button button--secondary" type="button">ניקוי הסינון</button>
+        <div class="empty-state__icon" aria-hidden="true">🙈</div>
+        <h2>לא מצאנו משהו מתאים</h2>
+        <p>נסו חיפוש אחר, או הציגו גם פריטים ששמורים כרגע וכאלה שכבר נמכרו.</p>
+        <button id="clearFiltersButton" class="button button--secondary" type="button">איפוס החיפוש</button>
       </section>
 
       <section id="errorState" class="empty-state is-hidden" role="alert">
-        <div class="empty-state__icon" aria-hidden="true">!</div>
-        <h2>לא הצלחנו לטעון את הפריטים</h2>
-        <p>בדקו שקובצי הנתונים קיימים ושהעמוד פורסם דרך GitHub Pages.</p>
+        <div class="empty-state__icon" aria-hidden="true">🙈</div>
+        <h2>אופס, משהו השתבש</h2>
+        <p>נסו לרענן את העמוד. אם זה עדיין לא מסתדר, כתבו לנו בוואטסאפ.</p>
       </section>
 
       <aside id="disclaimerSection" class="disclaimer" aria-labelledby="disclaimerTitle">
         <div class="disclaimer__icon" aria-hidden="true">i</div>
         <div>
-          <h2 id="disclaimerTitle">הבהרה חשובה</h2>
+          <h2 id="disclaimerTitle">כמה דברים שחשוב לדעת</h2>
           <ul class="disclaimer__list">
             <li id="availabilityDisclaimer"></li>
             <li id="reservationDisclaimer"></li>
@@ -107,17 +112,17 @@
   <footer class="footer">
     <div class="shell footer__inner">
       <div>
-        <p id="footerTitle" class="footer__title">מצאתם פריט שמתאים לכם?</p>
-        <p id="footerNote">שלחו הודעה בוואטסאפ עם שם הפריט ונתאם זמינות ואיסוף.</p>
+        <p id="footerTitle" class="footer__title">מצאתם משהו שאהבתם?</p>
+        <p id="footerNote">שלחו לנו הודעה בוואטסאפ ונבדוק שהוא עדיין זמין 😊</p>
       </div>
       <div class="footer__actions">
-        <a id="footerWhatsapp" class="button button--primary is-hidden" href="#" target="_blank" rel="noreferrer">הודעה בוואטסאפ</a>
+        <a id="footerWhatsapp" class="button button--primary is-hidden" href="#" target="_blank" rel="noreferrer">כתבו לנו בוואטסאפ</a>
         <a id="manageLink" class="manage-link is-hidden" href="https://app.pagescms.org" target="_blank" rel="noreferrer">ניהול הפריטים</a>
       </div>
     </div>
     <div class="shell footer__bottom">
       <span id="updatedText"></span>
-      <span>איסוף עצמי מרחובות בתיאום מראש</span>
+      <span>מוסיפים ומעדכנים פריטים כל הזמן 👀</span>
     </div>
   </footer>
 
@@ -149,8 +154,8 @@
         <dl id="dialogFacts" class="facts"></dl>
 
         <div class="dialog-actions">
-          <a id="dialogWhatsapp" class="button button--primary" href="#" target="_blank" rel="noreferrer">אני רוצה את הפריט</a>
-          <button id="shareItemButton" class="button button--secondary" type="button">שיתוף הפריט</button>
+          <a id="dialogWhatsapp" class="button button--primary" href="#" target="_blank" rel="noreferrer">מעניין אותי</a>
+          <button id="shareItemButton" class="button button--secondary" type="button">שיתוף</button>
         </div>
       </section>
     </div>
