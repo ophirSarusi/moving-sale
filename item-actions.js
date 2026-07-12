@@ -86,7 +86,9 @@ function enhanceDialog(items, phone) {
   if (!item || item.status === "sold") return;
 
   const expectedHref = createItemWhatsappLink(phone, item);
-  if (button.href !== expectedHref) button.href = expectedHref;
+  if (button.getAttribute("href") !== expectedHref) {
+    button.setAttribute("href", expectedHref);
+  }
 
   const label = item.status === "reserved"
     ? "לבדוק אם התפנה בוואטסאפ"
