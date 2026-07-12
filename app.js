@@ -55,7 +55,7 @@ function cacheElements() {
     "categoryFilters", "resultsCount", "loadingState", "itemsGrid", "emptyState", "errorState",
     "clearFiltersButton", "sharePageButton", "disclaimerSection", "disclaimerTitle",
     "availabilityDisclaimer", "reservationDisclaimer", "pickupDisclaimer",
-    "footerTitle", "footerNote", "footerWhatsapp",
+    "footerTitle", "footerNote", "footerWhatsapp", "floatingWhatsapp",
     "manageLink", "updatedText", "itemDialog", "closeDialogButton", "dialogImageStage",
     "dialogThumbnails", "previousImageButton", "nextImageButton", "dialogCategory", "dialogStatus",
     "dialogTitle", "dialogDescription", "dialogPrice", "dialogOriginalPrice", "dialogFacts",
@@ -201,8 +201,10 @@ function applySiteSettings() {
   if (generalLink) {
     elements.generalWhatsapp.href = generalLink;
     elements.footerWhatsapp.href = generalLink;
+    elements.floatingWhatsapp.href = generalLink;
     elements.generalWhatsapp.classList.remove("is-hidden");
     elements.footerWhatsapp.classList.remove("is-hidden");
+    elements.floatingWhatsapp.classList.remove("is-hidden");
   }
 
   if (state.site.showManageLink && state.site.manageUrl) {
