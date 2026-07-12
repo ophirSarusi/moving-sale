@@ -26,9 +26,6 @@ content:
         label: Intro text (Hebrew)
         type: text
         required: true
-      - name: badge
-        label: Small line above the headline (Hebrew)
-        type: string
       - name: announcement
         label: Temporary announcement (Hebrew)
         type: string
