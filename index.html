@@ -3,50 +3,32 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="מכירת מעבר דירה ברחובות — רהיטים, מוצרי חשמל ועוד דברים טובים לבית">
+  <meta name="description" content="פריטים למכירה לקראת מעבר דירה ברחובות">
   <meta name="theme-color" content="#f6f3ed">
-  <meta property="og:title" content="מכירת מעבר דירה ברחובות 🏠">
-  <meta property="og:description" content="דברים טובים ושמורים מחפשים בית חדש. אולי משהו מהם בדיוק בשבילכם 😊">
-  <meta property="og:type" content="website">
-  <title>מכירת מעבר דירה ברחובות 🏠</title>
+  <title>מכירת מעבר דירה</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css?v=4">
-  <style>
-    body { font-family: Rubik, "Noto Sans Hebrew", "Segoe UI", Arial, sans-serif; }
-    .pickup-line { margin: 10px 0 0; color: var(--muted); font-size: .94rem; }
-  </style>
+  <link rel="stylesheet" href="item-actions.css?v=4">
   <script src="app.js?v=4" defer></script>
+  <script src="item-actions.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#itemsGrid">דלגו לפריטים</a>
 
-  <header class="site-header">
-    <div class="shell topbar">
-      <a class="brand" href="./" aria-label="חזרה לראש העמוד">
-        <span class="brand__mark" aria-hidden="true">מ</span>
-        <span id="brandText">מכירת מעבר דירה</span>
-      </a>
-      <a id="generalWhatsapp" class="button button--quiet is-hidden" href="#" target="_blank" rel="noreferrer">
-        דברו איתנו
-      </a>
-    </div>
-  </header>
-
   <main>
     <section class="hero shell" aria-labelledby="siteTitle">
       <div class="hero__copy">
-        <p id="heroBadge" class="eyebrow">רהיטים, מוצרי חשמל ועוד דברים טובים לבית</p>
+        <p id="heroBadge" class="eyebrow">📍 איסוף עצמי מרחובות · בתיאום מראש</p>
         <h1 id="siteTitle">מכירת מעבר דירה ברחובות 🏠</h1>
         <p id="siteSubtitle" class="hero__subtitle">אנחנו עוברים דירה, והרבה דברים טובים ושמורים מחפשים בית חדש. אולי משהו מהם בדיוק בשבילכם 😊</p>
-        <p class="pickup-line">📍 איסוף עצמי מרחובות בתיאום מראש · פירוק והובלה באחריות הקונה</p>
         <p id="announcement" class="announcement is-hidden"></p>
       </div>
       <div class="hero__actions">
-        <a href="#catalog" class="button button--primary">לכל הפריטים</a>
-        <button id="sharePageButton" class="button button--secondary" type="button">שיתוף</button>
+        <a href="#catalog" class="button button--primary">יאללה, לפריטים</a>
+        <button id="sharePageButton" class="button button--secondary" type="button">לשתף עם חברים</button>
       </div>
     </section>
 
@@ -70,7 +52,10 @@
       </section>
 
       <div class="catalog__heading">
-        <h2>כל הפריטים</h2>
+        <div>
+          <p class="section-kicker">כל הדברים</p>
+          <h2>מה מחפש בית חדש?</h2>
+        </div>
         <p id="resultsCount" class="results-count" aria-live="polite"></p>
       </div>
 
@@ -84,21 +69,21 @@
 
       <section id="emptyState" class="empty-state is-hidden">
         <div class="empty-state__icon" aria-hidden="true">🙈</div>
-        <h2>לא מצאנו משהו מתאים</h2>
-        <p>נסו חיפוש אחר, או הציגו גם פריטים ששמורים כרגע וכאלה שכבר נמכרו.</p>
-        <button id="clearFiltersButton" class="button button--secondary" type="button">איפוס החיפוש</button>
+        <h2>לא מצאנו כלום</h2>
+        <p>נסו חיפוש אחר, או הציגו גם פריטים שמורים ונמכרו.</p>
+        <button id="clearFiltersButton" class="button button--secondary" type="button">להתחיל מחדש</button>
       </section>
 
       <section id="errorState" class="empty-state is-hidden" role="alert">
-        <div class="empty-state__icon" aria-hidden="true">🙈</div>
-        <h2>אופס, משהו השתבש</h2>
-        <p>נסו לרענן את העמוד. אם זה עדיין לא מסתדר, כתבו לנו בוואטסאפ.</p>
+        <div class="empty-state__icon" aria-hidden="true">!</div>
+        <h2>אופס, משהו לא נטען</h2>
+        <p>נסו לרענן את העמוד. אם זה עדיין לא מסתדר, אפשר לשלוח לנו הודעה.</p>
       </section>
 
       <aside id="disclaimerSection" class="disclaimer" aria-labelledby="disclaimerTitle">
         <div class="disclaimer__icon" aria-hidden="true">i</div>
         <div>
-          <h2 id="disclaimerTitle">כמה דברים שחשוב לדעת</h2>
+          <h2 id="disclaimerTitle">רק כדי שנהיה מתואמים</h2>
           <ul class="disclaimer__list">
             <li id="availabilityDisclaimer"></li>
             <li id="reservationDisclaimer"></li>
@@ -113,16 +98,16 @@
     <div class="shell footer__inner">
       <div>
         <p id="footerTitle" class="footer__title">מצאתם משהו שאהבתם?</p>
-        <p id="footerNote">שלחו לנו הודעה בוואטסאפ ונבדוק שהוא עדיין זמין 😊</p>
+        <p id="footerNote">שלחו הודעה עם שם הפריט ונמשיך משם 😊</p>
       </div>
       <div class="footer__actions">
-        <a id="footerWhatsapp" class="button button--primary is-hidden" href="#" target="_blank" rel="noreferrer">כתבו לנו בוואטסאפ</a>
+        <a id="footerWhatsapp" class="button button--primary is-hidden" href="#" target="_blank" rel="noreferrer">דברו איתנו בוואטסאפ</a>
         <a id="manageLink" class="manage-link is-hidden" href="https://app.pagescms.org" target="_blank" rel="noreferrer">ניהול הפריטים</a>
       </div>
     </div>
     <div class="shell footer__bottom">
       <span id="updatedText"></span>
-      <span>מוסיפים ומעדכנים פריטים כל הזמן 👀</span>
+      <span>העמוד מתעדכן כל הזמן — שווה לחזור ולהציץ 👀</span>
     </div>
   </footer>
 
@@ -154,8 +139,8 @@
         <dl id="dialogFacts" class="facts"></dl>
 
         <div class="dialog-actions">
-          <a id="dialogWhatsapp" class="button button--primary" href="#" target="_blank" rel="noreferrer">מעניין אותי</a>
-          <button id="shareItemButton" class="button button--secondary" type="button">שיתוף</button>
+          <a id="dialogWhatsapp" class="button button--primary button--whatsapp" href="#" target="_blank" rel="noreferrer">אני רוצה! בוואטסאפ</a>
+          <button id="shareItemButton" class="button button--secondary" type="button">לשתף את הפריט</button>
         </div>
       </section>
     </div>
