@@ -1,0 +1,9 @@
+{
+  "name": "moving-sale-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static browser-managed moving sale website",
+  "scripts": {
+    "test": "node scripts/validate-data.mjs"
+  }
+}

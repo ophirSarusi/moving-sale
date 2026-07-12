@@ -1,0 +1,200 @@
+media:
+  - name: item_images
+    label: תמונות פריטים
+    input: media/items
+    output: /media/items
+    rename: safe
+    extensions: [jpg, jpeg, png, webp]
+    categories: [image]
+
+content:
+  - name: site_settings
+    label: הגדרות העמוד
+    type: file
+    path: data/site.json
+    format: json
+    fields:
+      - name: brand
+        label: שם קצר בראש העמוד
+        type: string
+        required: true
+      - name: title
+        label: כותרת ראשית
+        type: string
+        required: true
+      - name: subtitle
+        label: טקסט מתחת לכותרת
+        type: text
+        required: true
+      - name: badge
+        label: תג קטן מעל הכותרת
+        type: string
+      - name: announcement
+        label: הודעה זמנית
+        type: string
+        description: אפשר להשאיר ריק כדי להסתיר.
+      - name: location
+        label: אזור האיסוף הקצר
+        type: string
+        required: true
+      - name: pickupText
+        label: הנחיות איסוף כלליות
+        type: string
+        required: true
+      - name: whatsapp
+        label: מספר וואטסאפ
+        type: string
+        description: מספר בינלאומי ללא פלוס, רווחים או מקפים. לדוגמה 972541234567.
+        pattern:
+          regex: "^\\d{8,15}$"
+          message: יש להזין ספרות בלבד, כולל קידומת המדינה.
+      - name: currency
+        label: מטבע
+        type: select
+        options:
+          values:
+            - name: ILS
+              label: שקל חדש
+            - name: USD
+              label: דולר
+            - name: EUR
+              label: אירו
+      - name: disclaimerTitle
+        label: כותרת ההבהרה
+        type: string
+        required: true
+      - name: availabilityDisclaimer
+        label: הבהרת זמינות
+        type: text
+        required: true
+      - name: reservationDisclaimer
+        label: תנאי שמירת פריט
+        type: text
+        required: true
+      - name: pickupDisclaimer
+        label: תנאי איסוף ואחריות לעיכוב
+        type: text
+        required: true
+      - name: footerTitle
+        label: כותרת אזור יצירת הקשר
+        type: string
+      - name: footerNote
+        label: טקסט אזור יצירת הקשר
+        type: string
+      - name: updatedAt
+        label: תאריך עדכון אחרון
+        type: date
+      - name: showManageLink
+        label: הצגת קישור ניהול בתחתית העמוד
+        type: boolean
+      - name: manageUrl
+        label: כתובת מערכת הניהול
+        type: string
+
+  - name: sale_items
+    label: פריטים למכירה
+    type: file
+    path: data/items.json
+    format: json
+    list: true
+    fields:
+      - name: id
+        label: מזהה פנימי
+        type: uuid
+        options:
+          editable: false
+          generate: false
+      - name: title
+        label: שם הפריט
+        type: string
+        required: true
+      - name: description
+        label: תיאור
+        type: text
+        required: true
+      - name: price
+        label: מחיר מבוקש
+        type: number
+        required: true
+        options:
+          min: 0
+      - name: originalPrice
+        label: מחיר מקורי או קודם
+        type: number
+        description: אפשר להשאיר 0 אם לא רוצים להציג מחיר מחוק.
+        options:
+          min: 0
+      - name: category
+        label: קטגוריה
+        type: select
+        required: true
+        options:
+          values:
+            - סלון ופינת אוכל
+            - חדר שינה
+            - ילדים
+            - מטבח
+            - מוצרי חשמל
+            - אחסון
+            - משרד
+            - תאורה ודקורציה
+            - אחר
+      - name: status
+        label: סטטוס
+        type: select
+        required: true
+        options:
+          values:
+            - name: available
+              label: זמין
+            - name: reserved
+              label: שמור זמנית
+            - name: sold
+              label: נמכר
+      - name: availability
+        label: זמינות
+        type: string
+        required: true
+        description: לדוגמה ״זמין מיידית״ או ״זמין החל מ-15.08.2026״.
+      - name: condition
+        label: מצב הפריט
+        type: string
+      - name: dimensions
+        label: מידות
+        type: string
+        description: לדוגמה 140×85×75 ס״מ.
+      - name: negotiable
+        label: יש גמישות במחיר
+        type: boolean
+      - name: featured
+        label: פריט מומלץ שיופיע ראשון
+        type: boolean
+      - name: pickup
+        label: הנחיות איסוף מיוחדות
+        type: string
+        description: אפשר להשאיר ריק כדי להשתמש בהנחיות הכלליות.
+      - name: images
+        label: תמונות
+        type: image
+        options:
+          media: item_images
+          multiple:
+            max: 8
+          unique: true
+          extensions: [jpg, jpeg, png, webp]
+          rename: safe
+      - name: sortOrder
+        label: סדר הופעה
+        type: number
+        description: מספר נמוך יותר יופיע קודם. פריטים מומלצים תמיד מופיעים בראש.
+        options:
+          min: 0
+
+settings:
+  commit:
+    templates:
+      create: "content: add {filename}"
+      update: "content: update {filename}"
+      delete: "content: remove {filename}"
+      upload: "media: add {filename}"
+      remove: "media: remove {filename}"

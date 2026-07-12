@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="פריטים למכירה לקראת מעבר דירה">
+  <meta name="theme-color" content="#f6f1e8">
+  <title>מכירת מעבר דירה</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#itemsGrid">דלגו לפריטים</a>
+
+  <header class="hero">
+    <div class="shell">
+      <nav class="topbar" aria-label="ניווט ראשי">
+        <a class="brand" href="./" aria-label="חזרה לראש העמוד">
+          <span class="brand__mark" aria-hidden="true">◌</span>
+          <span id="brandText">מכירת מעבר דירה</span>
+        </a>
+        <a id="generalWhatsapp" class="button button--ghost is-hidden" href="#" target="_blank" rel="noreferrer">
+          <span aria-hidden="true">✦</span>
+          יצירת קשר
+        </a>
+      </nav>
+
+      <div class="hero__content">
+        <p id="heroBadge" class="eyebrow">איסוף בתיאום מראש</p>
+        <h1 id="siteTitle">דברים טובים מחפשים בית חדש</h1>
+        <p id="siteSubtitle" class="hero__subtitle">רהיטים, מוצרי חשמל ופריטים לבית לקראת מעבר דירה.</p>
+        <p id="announcement" class="announcement is-hidden"></p>
+
+        <div class="hero__actions">
+          <a href="#catalog" class="button button--primary">לצפייה בפריטים</a>
+          <button id="sharePageButton" class="button button--secondary" type="button">שיתוף העמוד</button>
+        </div>
+
+        <dl class="stats" aria-label="סיכום הפריטים">
+          <div class="stats__item">
+            <dt>זמינים עכשיו</dt>
+            <dd id="availableCount">0</dd>
+          </div>
+          <div class="stats__item">
+            <dt>סה״כ פריטים</dt>
+            <dd id="totalCount">0</dd>
+          </div>
+          <div class="stats__item">
+            <dt>איסוף</dt>
+            <dd id="pickupLocation">בתיאום</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <main id="catalog" class="catalog shell">
+    <section class="filters" aria-label="סינון וחיפוש">
+      <div class="filters__top">
+        <label class="search">
+          <span class="sr-only">חיפוש פריטים</span>
+          <span class="search__icon" aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="מה מחפשים? שולחן, מנורה, ארון..." autocomplete="off">
+        </label>
+
+        <label class="toggle">
+          <input id="availableOnlyToggle" type="checkbox" checked>
+          <span class="toggle__track" aria-hidden="true"><span class="toggle__thumb"></span></span>
+          <span>הצגת זמינים בלבד</span>
+        </label>
+      </div>
+
+      <div id="categoryFilters" class="chips" role="group" aria-label="קטגוריות"></div>
+    </section>
+
+    <div class="catalog__heading">
+      <div>
+        <p class="section-kicker">הקטלוג</p>
+        <h2>פריטים למכירה</h2>
+      </div>
+      <p id="resultsCount" class="results-count" aria-live="polite"></p>
+    </div>
+
+    <section id="loadingState" class="loading-grid" aria-label="הפריטים נטענים">
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+      <div class="skeleton-card"></div>
+    </section>
+
+    <section id="itemsGrid" class="items-grid is-hidden" aria-label="רשימת פריטים"></section>
+
+    <section id="emptyState" class="empty-state is-hidden">
+      <div class="empty-state__icon" aria-hidden="true">⌁</div>
+      <h2>לא נמצאו פריטים</h2>
+      <p>נסו לשנות את החיפוש או להציג גם פריטים שמורים ונמכרו.</p>
+      <button id="clearFiltersButton" class="button button--secondary" type="button">ניקוי הסינון</button>
+    </section>
+
+    <section id="errorState" class="empty-state is-hidden" role="alert">
+      <div class="empty-state__icon" aria-hidden="true">!</div>
+      <h2>לא הצלחנו לטעון את הפריטים</h2>
+      <p>בדקו שקובצי הנתונים קיימים ושהעמוד פורסם דרך GitHub Pages.</p>
+    </section>
+
+    <aside id="disclaimerSection" class="disclaimer" aria-labelledby="disclaimerTitle">
+      <div class="disclaimer__icon" aria-hidden="true">!</div>
+      <div>
+        <h2 id="disclaimerTitle">הבהרה חשובה</h2>
+        <ul class="disclaimer__list">
+          <li id="availabilityDisclaimer"></li>
+          <li id="reservationDisclaimer"></li>
+          <li id="pickupDisclaimer"></li>
+        </ul>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <div class="shell footer__inner">
+      <div>
+        <p id="footerTitle" class="footer__title">שאלות או רוצים לשמור פריט?</p>
+        <p id="footerNote">שלחו הודעה ונחזור אליכם בהקדם.</p>
+      </div>
+      <div class="footer__actions">
+        <a id="footerWhatsapp" class="button button--primary is-hidden" href="#" target="_blank" rel="noreferrer">הודעה בוואטסאפ</a>
+        <a id="manageLink" class="manage-link is-hidden" href="https://app.pagescms.org" target="_blank" rel="noreferrer">ניהול הפריטים</a>
+      </div>
+    </div>
+    <div class="shell footer__bottom">
+      <span id="updatedText"></span>
+      <span>נבנה באופן עצמאי לקראת פרק חדש</span>
+    </div>
+  </footer>
+
+  <dialog id="itemDialog" class="item-dialog" aria-labelledby="dialogTitle">
+    <button id="closeDialogButton" class="dialog-close" type="button" aria-label="סגירת חלון">×</button>
+    <div class="dialog-layout">
+      <section class="dialog-gallery" aria-label="גלריית תמונות">
+        <div class="dialog-gallery__stage">
+          <button id="previousImageButton" class="gallery-arrow gallery-arrow--previous" type="button" aria-label="תמונה קודמת">‹</button>
+          <div id="dialogImageStage" class="dialog-gallery__image"></div>
+          <button id="nextImageButton" class="gallery-arrow gallery-arrow--next" type="button" aria-label="תמונה הבאה">›</button>
+        </div>
+        <div id="dialogThumbnails" class="dialog-thumbnails"></div>
+      </section>
+
+      <section class="dialog-details">
+        <div class="dialog-details__topline">
+          <span id="dialogCategory" class="item-category"></span>
+          <span id="dialogStatus" class="status-badge"></span>
+        </div>
+        <h2 id="dialogTitle"></h2>
+        <p id="dialogDescription" class="dialog-description"></p>
+
+        <div class="dialog-price-row">
+          <strong id="dialogPrice" class="dialog-price"></strong>
+          <span id="dialogOriginalPrice" class="original-price is-hidden"></span>
+        </div>
+
+        <dl id="dialogFacts" class="facts"></dl>
+
+        <div class="dialog-actions">
+          <a id="dialogWhatsapp" class="button button--primary" href="#" target="_blank" rel="noreferrer">אני רוצה את הפריט</a>
+          <button id="shareItemButton" class="button button--secondary" type="button">שיתוף הפריט</button>
+        </div>
+      </section>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

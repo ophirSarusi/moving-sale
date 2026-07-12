@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#eadfce"/>
+  <path d="M353 160h494v585H353Z" fill="#c58c58"/>
+  <path d="M382 207h436v112H382Zm0 134h436v112H382Zm0 134h436v112H382Zm0 134h436v92H382Z" fill="#ddb17e" stroke="#9c673d" stroke-width="8"/>
+  <circle cx="600" cy="263" r="11" fill="#74462d"/><circle cx="600" cy="397" r="11" fill="#74462d"/><circle cx="600" cy="531" r="11" fill="#74462d"/><circle cx="600" cy="655" r="11" fill="#74462d"/>
+  <text x="600" y="815" text-anchor="middle" font-family="Arial" font-size="52" fill="#5c402c">תמונת הדגמה</text>
+</svg>

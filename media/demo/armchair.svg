@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+  <rect width="1200" height="900" fill="#dce3d5"/>
+  <circle cx="210" cy="170" r="115" fill="#b9c7ae" opacity=".7"/>
+  <path d="M372 287q0-84 84-84h288q84 0 84 84v254H372Z" fill="#586f51"/>
+  <rect x="303" y="430" width="594" height="223" rx="86" fill="#647d5c"/>
+  <rect x="248" y="419" width="138" height="252" rx="60" fill="#4b6145"/>
+  <rect x="814" y="419" width="138" height="252" rx="60" fill="#4b6145"/>
+  <path d="M346 648h63l-20 100h-55Zm445 0h63l12 100h-55Z" fill="#4e382a"/>
+  <text x="600" y="815" text-anchor="middle" font-family="Arial" font-size="52" fill="#34422f">תמונת הדגמה</text>
+</svg>

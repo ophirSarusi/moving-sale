@@ -1,0 +1,78 @@
+[
+  {
+    "id": "2b15911d-6a43-4987-a80c-fbd629dff70a",
+    "title": "שולחן אוכל נפתח",
+    "description": "שולחן עץ יציב ונוח שמתאים לשימוש יומיומי. נפתח בקלות ומתאים לאירוח של עד שמונה סועדים.",
+    "price": 650,
+    "originalPrice": 1800,
+    "category": "סלון ופינת אוכל",
+    "status": "available",
+    "availability": "זמין מיידית",
+    "condition": "מצב טוב מאוד",
+    "dimensions": "140×85 ס״מ, נפתח ל-200 ס״מ",
+    "negotiable": true,
+    "featured": true,
+    "pickup": "איסוף עצמי, נדרש רכב מתאים",
+    "images": [
+      "/media/demo/dining-table.svg"
+    ],
+    "sortOrder": 10
+  },
+  {
+    "id": "14853b53-f10e-455b-b942-c9d4564af4f8",
+    "title": "כורסה ירוקה",
+    "description": "כורסה נוחה עם בד נעים, מתאימה לסלון או לפינת קריאה. ללא קרעים או כתמים משמעותיים.",
+    "price": 350,
+    "originalPrice": 950,
+    "category": "סלון ופינת אוכל",
+    "status": "available",
+    "availability": "זמין החל מ-20.07.2026",
+    "condition": "מצב טוב",
+    "dimensions": "רוחב 78 ס״מ, עומק 82 ס״מ",
+    "negotiable": false,
+    "featured": false,
+    "pickup": "איסוף עצמי",
+    "images": [
+      "/media/demo/armchair.svg"
+    ],
+    "sortOrder": 20
+  },
+  {
+    "id": "6b26ace8-18a5-4bc4-bb1d-8b3c888fae4a",
+    "title": "שידת מגירות לילדים",
+    "description": "שידה מרווחת ונוחה עם ארבע מגירות. יש סימני שימוש קלים בחלק העליון.",
+    "price": 220,
+    "originalPrice": 600,
+    "category": "ילדים",
+    "status": "reserved",
+    "availability": "זמין החל מ-01.08.2026, בכפוף לכך שהשמירה תבוטל",
+    "condition": "מצב טוב עם סימני שימוש",
+    "dimensions": "90×80×45 ס״מ",
+    "negotiable": true,
+    "featured": false,
+    "pickup": "איסוף עצמי",
+    "images": [
+      "/media/demo/dresser.svg"
+    ],
+    "sortOrder": 30
+  },
+  {
+    "id": "5eaf8b5e-267b-4d75-a3af-876da0bf16aa",
+    "title": "מנורת רצפה",
+    "description": "מנורת רצפה מינימליסטית עם אור חם. עובדת באופן תקין ומגיעה עם נורה.",
+    "price": 90,
+    "originalPrice": 0,
+    "category": "תאורה ודקורציה",
+    "status": "sold",
+    "availability": "לא זמין",
+    "condition": "מצב מצוין",
+    "dimensions": "גובה 155 ס״מ",
+    "negotiable": false,
+    "featured": false,
+    "pickup": "איסוף עצמי",
+    "images": [
+      "/media/demo/floor-lamp.svg"
+    ],
+    "sortOrder": 40
+  }
+]
