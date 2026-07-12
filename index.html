@@ -3,127 +3,112 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="פריטים למכירה לקראת מעבר דירה">
-  <meta name="theme-color" content="#f7f4ee">
+  <meta name="description" content="פריטים למכירה לקראת מעבר דירה ברחובות">
+  <meta name="theme-color" content="#f6f3ed">
   <title>מכירת מעבר דירה</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
-  <script src="app.js" defer></script>
+  <link rel="stylesheet" href="styles.css?v=3">
+  <script src="app.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#itemsGrid">דלגו לפריטים</a>
 
-  <header class="hero">
-    <div class="shell">
-      <nav class="topbar" aria-label="ניווט ראשי">
-        <a class="brand" href="./" aria-label="חזרה לראש העמוד">
-          <span class="brand__mark" aria-hidden="true">◌</span>
-          <span id="brandText">מכירת מעבר דירה</span>
-        </a>
-        <a id="generalWhatsapp" class="button button--ghost is-hidden" href="#" target="_blank" rel="noreferrer">
-          <span aria-hidden="true">✦</span>
-          יצירת קשר
-        </a>
-      </nav>
-
-      <div class="hero__content">
-        <p id="heroBadge" class="eyebrow">איסוף בתיאום מראש</p>
-        <h1 id="siteTitle">דברים טובים מחפשים בית חדש</h1>
-        <p id="siteSubtitle" class="hero__subtitle">רהיטים, מוצרי חשמל ופריטים לבית לקראת מעבר דירה.</p>
-        <p id="announcement" class="announcement is-hidden"></p>
-
-        <div class="hero__actions">
-          <a href="#catalog" class="button button--primary">לצפייה בפריטים</a>
-          <button id="sharePageButton" class="button button--secondary" type="button">שיתוף העמוד</button>
-        </div>
-
-        <dl class="stats" aria-label="סיכום הפריטים">
-          <div class="stats__item">
-            <dt>זמינים עכשיו</dt>
-            <dd id="availableCount">0</dd>
-          </div>
-          <div class="stats__item">
-            <dt>סה״כ פריטים</dt>
-            <dd id="totalCount">0</dd>
-          </div>
-          <div class="stats__item">
-            <dt>איסוף</dt>
-            <dd id="pickupLocation">בתיאום</dd>
-          </div>
-        </dl>
-      </div>
+  <header class="site-header">
+    <div class="shell topbar">
+      <a class="brand" href="./" aria-label="חזרה לראש העמוד">
+        <span class="brand__mark" aria-hidden="true">מ</span>
+        <span id="brandText">מכירת מעבר דירה</span>
+      </a>
+      <a id="generalWhatsapp" class="button button--quiet is-hidden" href="#" target="_blank" rel="noreferrer">
+        יצירת קשר
+      </a>
     </div>
   </header>
 
-  <main id="catalog" class="catalog shell">
-    <section class="filters" aria-label="סינון וחיפוש">
-      <div class="filters__top">
-        <label class="search">
-          <span class="sr-only">חיפוש פריטים</span>
-          <span class="search__icon" aria-hidden="true">⌕</span>
-          <input id="searchInput" type="search" placeholder="מה מחפשים? שולחן, מנורה, ארון..." autocomplete="off">
-        </label>
+  <main>
+    <section class="hero shell" aria-labelledby="siteTitle">
+      <div class="hero__copy">
+        <p id="heroBadge" class="eyebrow">איסוף עצמי מרחובות</p>
+        <h1 id="siteTitle">מכירת מעבר דירה ברחובות</h1>
+        <p id="siteSubtitle" class="hero__subtitle">רהיטים ופריטים לבית במצב טוב שמחפשים בית חדש. המחיר והזמינות מופיעים בכל פריט.</p>
+        <p id="announcement" class="announcement is-hidden"></p>
+      </div>
+      <div class="hero__actions">
+        <a href="#catalog" class="button button--primary">לצפייה בפריטים</a>
+        <button id="sharePageButton" class="button button--secondary" type="button">שיתוף העמוד</button>
+      </div>
+    </section>
 
-        <label class="toggle">
-          <input id="availableOnlyToggle" type="checkbox" checked>
-          <span class="toggle__track" aria-hidden="true"><span class="toggle__thumb"></span></span>
-          <span>הצגת זמינים בלבד</span>
-        </label>
+    <section id="catalog" class="catalog shell">
+      <section class="filters" aria-label="סינון וחיפוש">
+        <div class="filters__top">
+          <label class="search">
+            <span class="sr-only">חיפוש פריטים</span>
+            <span class="search__icon" aria-hidden="true">⌕</span>
+            <input id="searchInput" type="search" placeholder="חיפוש פריט..." autocomplete="off">
+          </label>
+
+          <label class="toggle">
+            <input id="availableOnlyToggle" type="checkbox" checked>
+            <span class="toggle__track" aria-hidden="true"><span class="toggle__thumb"></span></span>
+            <span>זמינים בלבד</span>
+          </label>
+        </div>
+
+        <div id="categoryFilters" class="chips" role="group" aria-label="קטגוריות"></div>
+      </section>
+
+      <div class="catalog__heading">
+        <div>
+          <p class="section-kicker">הפריטים</p>
+          <h2>מה מוצע למכירה</h2>
+        </div>
+        <p id="resultsCount" class="results-count" aria-live="polite"></p>
       </div>
 
-      <div id="categoryFilters" class="chips" role="group" aria-label="קטגוריות"></div>
+      <section id="loadingState" class="loading-grid" aria-label="הפריטים נטענים">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </section>
+
+      <section id="itemsGrid" class="items-grid is-hidden" aria-label="רשימת פריטים"></section>
+
+      <section id="emptyState" class="empty-state is-hidden">
+        <div class="empty-state__icon" aria-hidden="true">⌕</div>
+        <h2>לא נמצאו פריטים</h2>
+        <p>נסו לשנות את החיפוש או להציג גם פריטים שמורים ונמכרו.</p>
+        <button id="clearFiltersButton" class="button button--secondary" type="button">ניקוי הסינון</button>
+      </section>
+
+      <section id="errorState" class="empty-state is-hidden" role="alert">
+        <div class="empty-state__icon" aria-hidden="true">!</div>
+        <h2>לא הצלחנו לטעון את הפריטים</h2>
+        <p>בדקו שקובצי הנתונים קיימים ושהעמוד פורסם דרך GitHub Pages.</p>
+      </section>
+
+      <aside id="disclaimerSection" class="disclaimer" aria-labelledby="disclaimerTitle">
+        <div class="disclaimer__icon" aria-hidden="true">i</div>
+        <div>
+          <h2 id="disclaimerTitle">הבהרה חשובה</h2>
+          <ul class="disclaimer__list">
+            <li id="availabilityDisclaimer"></li>
+            <li id="reservationDisclaimer"></li>
+            <li id="pickupDisclaimer"></li>
+          </ul>
+        </div>
+      </aside>
     </section>
-
-    <div class="catalog__heading">
-      <div>
-        <p class="section-kicker">הקטלוג</p>
-        <h2>פריטים למכירה</h2>
-      </div>
-      <p id="resultsCount" class="results-count" aria-live="polite"></p>
-    </div>
-
-    <section id="loadingState" class="loading-grid" aria-label="הפריטים נטענים">
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-      <div class="skeleton-card"></div>
-    </section>
-
-    <section id="itemsGrid" class="items-grid is-hidden" aria-label="רשימת פריטים"></section>
-
-    <section id="emptyState" class="empty-state is-hidden">
-      <div class="empty-state__icon" aria-hidden="true">⌁</div>
-      <h2>לא נמצאו פריטים</h2>
-      <p>נסו לשנות את החיפוש או להציג גם פריטים שמורים ונמכרו.</p>
-      <button id="clearFiltersButton" class="button button--secondary" type="button">ניקוי הסינון</button>
-    </section>
-
-    <section id="errorState" class="empty-state is-hidden" role="alert">
-      <div class="empty-state__icon" aria-hidden="true">!</div>
-      <h2>לא הצלחנו לטעון את הפריטים</h2>
-      <p>בדקו שקובצי הנתונים קיימים ושהעמוד פורסם דרך GitHub Pages.</p>
-    </section>
-
-    <aside id="disclaimerSection" class="disclaimer" aria-labelledby="disclaimerTitle">
-      <div class="disclaimer__icon" aria-hidden="true">!</div>
-      <div>
-        <h2 id="disclaimerTitle">הבהרה חשובה</h2>
-        <ul class="disclaimer__list">
-          <li id="availabilityDisclaimer"></li>
-          <li id="reservationDisclaimer"></li>
-          <li id="pickupDisclaimer"></li>
-        </ul>
-      </div>
-    </aside>
   </main>
 
   <footer class="footer">
     <div class="shell footer__inner">
       <div>
-        <p id="footerTitle" class="footer__title">שאלות או רוצים לשמור פריט?</p>
-        <p id="footerNote">שלחו הודעה ונחזור אליכם בהקדם.</p>
+        <p id="footerTitle" class="footer__title">מצאתם פריט שמתאים לכם?</p>
+        <p id="footerNote">שלחו הודעה בוואטסאפ עם שם הפריט ונתאם זמינות ואיסוף.</p>
       </div>
       <div class="footer__actions">
         <a id="footerWhatsapp" class="button button--primary is-hidden" href="#" target="_blank" rel="noreferrer">הודעה בוואטסאפ</a>
@@ -132,7 +117,7 @@
     </div>
     <div class="shell footer__bottom">
       <span id="updatedText"></span>
-      <span>נבנה באופן עצמאי לקראת פרק חדש</span>
+      <span>איסוף עצמי מרחובות בתיאום מראש</span>
     </div>
   </footer>
 
@@ -172,7 +157,7 @@
   </dialog>
 
   <a id="floatingWhatsapp" class="floating-whatsapp is-hidden" href="#" target="_blank" rel="noreferrer" aria-label="שליחת הודעה בוואטסאפ">
-    <span aria-hidden="true">✆</span>
+    <svg aria-hidden="true" viewBox="0 0 32 32" focusable="false"><path fill="currentColor" d="M16.1 4.3A11.5 11.5 0 0 0 6.3 21.8L4.8 27.3l5.7-1.5A11.5 11.5 0 1 0 16.1 4.3Zm0 20.9c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.4.9.9-3.3-.3-.4a9.3 9.3 0 1 1 8.2 4.4Zm5.1-7c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.2-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.7-.8-2.9-1.6-4-3.5-.3-.5.3-.5.8-1.5.1-.2 0-.4 0-.6l-.9-2.1c-.2-.5-.5-.4-.7-.4h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.3 1.4 3.5c.2.2 2.4 3.7 5.9 5.2.8.4 1.5.6 2 .7.8.3 1.6.2 2.2.1.7-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/></svg>
     <span>וואטסאפ</span>
   </a>
 
