@@ -1,6 +1,6 @@
 media:
   - name: item_images
-    label: תמונות פריטים
+    label: Item photos
     input: media/items
     output: /media/items
     rename: safe
@@ -9,172 +9,191 @@ media:
 
 content:
   - name: site_settings
-    label: הגדרות העמוד
+    label: Website settings — usually do not edit
     type: file
     path: data/site.json
     format: json
     fields:
       - name: brand
-        label: שם קצר בראש העמוד
+        label: Short website name (Hebrew)
         type: string
         required: true
       - name: title
-        label: כותרת ראשית
+        label: Main headline (Hebrew)
         type: string
         required: true
       - name: subtitle
-        label: טקסט מתחת לכותרת
+        label: Intro text (Hebrew)
         type: text
         required: true
       - name: badge
-        label: תג קטן מעל הכותרת
+        label: Small line above the headline (Hebrew)
         type: string
       - name: announcement
-        label: הודעה זמנית
+        label: Temporary announcement (Hebrew)
         type: string
-        description: אפשר להשאיר ריק כדי להסתיר.
+        description: Leave empty to hide it.
       - name: location
-        label: אזור האיסוף הקצר
+        label: Pickup area (Hebrew)
         type: string
         required: true
       - name: pickupText
-        label: הנחיות איסוף כלליות
+        label: General pickup instructions (Hebrew)
         type: string
         required: true
       - name: whatsapp
-        label: מספר וואטסאפ
+        label: WhatsApp number
         type: string
-        description: מספר בינלאומי ללא פלוס, רווחים או מקפים. לדוגמה 972541234567.
+        description: "International format, digits only. Example: 972541234567."
         pattern:
           regex: "^\\d{8,15}$"
-          message: יש להזין ספרות בלבד, כולל קידומת המדינה.
+          message: Enter digits only, including the country code.
       - name: currency
-        label: מטבע
+        label: Currency
         type: select
         options:
           values:
             - name: ILS
-              label: שקל חדש
+              label: Israeli shekel
             - name: USD
-              label: דולר
+              label: US dollar
             - name: EUR
-              label: אירו
+              label: Euro
       - name: disclaimerTitle
-        label: כותרת ההבהרה
+        label: Disclaimer heading (Hebrew)
         type: string
         required: true
       - name: availabilityDisclaimer
-        label: הבהרת זמינות
+        label: Availability disclaimer (Hebrew)
         type: text
         required: true
       - name: reservationDisclaimer
-        label: תנאי שמירת פריט
+        label: Reservation terms (Hebrew)
         type: text
         required: true
       - name: pickupDisclaimer
-        label: תנאי איסוף ואחריות לעיכוב
+        label: Pickup and late-collection terms (Hebrew)
         type: text
         required: true
       - name: footerTitle
-        label: כותרת אזור יצירת הקשר
+        label: Contact section heading (Hebrew)
         type: string
       - name: footerNote
-        label: טקסט אזור יצירת הקשר
+        label: Contact section text (Hebrew)
         type: string
       - name: updatedAt
-        label: תאריך עדכון אחרון
+        label: Last updated date
         type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
       - name: showManageLink
-        label: הצגת קישור ניהול בתחתית העמוד
+        label: Show the management link in the website footer
         type: boolean
       - name: manageUrl
-        label: כתובת מערכת הניהול
+        label: Management system URL
         type: string
 
   - name: sale_items
-    label: פריטים למכירה
+    label: Sale items
     type: file
     path: data/items.json
     format: json
     list: true
     fields:
       - name: id
-        label: מזהה פנימי
+        label: Internal ID
         type: uuid
         options:
           editable: false
           generate: false
       - name: title
-        label: שם הפריט
+        label: Item name — Hebrew
         type: string
         required: true
+        description: Shopper-facing Hebrew. Use the ChatGPT prompt in ADMIN-GUIDE.md if starting from English notes.
       - name: description
-        label: תיאור
+        label: Description — Hebrew
         type: text
         required: true
+        description: Keep it friendly and concise. Mention useful details and any flaws honestly.
       - name: price
-        label: מחיר מבוקש
+        label: Asking price
         type: number
         required: true
         options:
           min: 0
       - name: originalPrice
-        label: מחיר מקורי או קודם
+        label: Original or previous price (optional)
         type: number
-        description: אפשר להשאיר 0 אם לא רוצים להציג מחיר מחוק.
+        description: Leave at 0 if you do not want a crossed-out price.
         options:
           min: 0
       - name: category
-        label: קטגוריה
+        label: Category
         type: select
         required: true
         options:
+          placeholder: Select a category
           values:
-            - סלון ופינת אוכל
-            - חדר שינה
-            - ילדים
-            - מטבח
-            - מוצרי חשמל
-            - אחסון
-            - משרד
-            - תאורה ודקורציה
-            - אחר
+            - name: "סלון ופינת אוכל"
+              label: Living & dining room
+            - name: "חדר שינה"
+              label: Bedroom
+            - name: "ילדים"
+              label: Children
+            - name: "מטבח"
+              label: Kitchen
+            - name: "מוצרי חשמל"
+              label: Appliances
+            - name: "אחסון"
+              label: Storage
+            - name: "משרד"
+              label: Office
+            - name: "תאורה ודקורציה"
+              label: Lighting & decor
+            - name: "אחר"
+              label: Other
       - name: status
-        label: סטטוס
+        label: Status
         type: select
         required: true
         options:
+          placeholder: Select a status
           values:
             - name: available
-              label: זמין
+              label: Available
             - name: reserved
-              label: שמור זמנית
+              label: Temporarily reserved
             - name: sold
-              label: נמכר
-      - name: availability
-        label: זמינות
-        type: string
-        required: true
-        description: לדוגמה ״זמין מיידית״ או ״זמין החל מ-15.08.2026״.
+              label: Sold
+      - name: availableFrom
+        label: Available from (optional)
+        type: date
+        default: ""
+        description: Leave empty if it is available immediately. The public website generates the Hebrew availability text automatically. Sold and reserved statuses override this text.
+        options:
+          format: yyyy-MM-dd
       - name: condition
-        label: מצב הפריט
+        label: Condition — Hebrew
         type: string
+        description: "Examples: מצב מצוין, מצב טוב מאוד, מצב טוב עם סימני שימוש."
       - name: dimensions
-        label: מידות
+        label: Dimensions
         type: string
-        description: לדוגמה 140×85×75 ס״מ.
+        description: "Numbers can be entered normally. Example: 140×85×75 cm."
       - name: negotiable
-        label: יש גמישות במחיר
+        label: Price is negotiable
         type: boolean
       - name: featured
-        label: פריט מומלץ שיופיע ראשון
+        label: Feature this item first
         type: boolean
       - name: pickup
-        label: הנחיות איסוף מיוחדות
+        label: Special pickup instructions — Hebrew
         type: string
-        description: אפשר להשאיר ריק כדי להשתמש בהנחיות הכלליות.
+        description: Leave empty to use the general pickup instructions.
       - name: images
-        label: תמונות
+        label: Photos
         type: image
         options:
           media: item_images
@@ -184,9 +203,9 @@ content:
           extensions: [jpg, jpeg, png, webp]
           rename: safe
       - name: sortOrder
-        label: סדר הופעה
+        label: Display order
         type: number
-        description: מספר נמוך יותר יופיע קודם. פריטים מומלצים תמיד מופיעים בראש.
+        description: Lower numbers appear first. Featured items always appear before other items.
         options:
           min: 0
 
