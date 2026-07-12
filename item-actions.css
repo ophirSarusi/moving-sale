@@ -1,0 +1,55 @@
+.item-card__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 42px;
+  margin-top: 14px;
+  padding: 9px 14px;
+  color: #fff;
+  background: #1daa55;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(29, 170, 85, 0.2);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.item-card__whatsapp:hover {
+  background: #128c43;
+  box-shadow: 0 11px 24px rgba(18, 140, 67, 0.26);
+  transform: translateY(-1px);
+}
+
+.item-card__whatsapp:focus-visible {
+  outline: 3px solid rgba(29, 170, 85, 0.28);
+  outline-offset: 3px;
+}
+
+.item-card__whatsapp svg {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 auto;
+}
+
+.button--whatsapp,
+.dialog-actions .button--whatsapp {
+  color: #fff;
+  background: #1daa55;
+  box-shadow: 0 12px 26px rgba(29, 170, 85, 0.22);
+}
+
+.button--whatsapp:hover,
+.dialog-actions .button--whatsapp:hover {
+  background: #128c43;
+  box-shadow: 0 16px 30px rgba(18, 140, 67, 0.27);
+}
+
+@media (max-width: 650px) {
+  .item-card__whatsapp {
+    min-height: 44px;
+    font-size: 0.95rem;
+  }
+}
