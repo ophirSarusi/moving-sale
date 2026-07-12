@@ -87,5 +87,20 @@
     "images": [
       "/media/items/1783874813101.jpg"
     ]
+  },
+  {
+    "id": "b7f1a98a-6434-4024-84a5-3ab03f3df716",
+    "title": "עגלת שטח/קמפינג/חוף",
+    "description": "עגלה ענקית עם גלגלים רחבים במיוחד של חברת Discovery Adventures, לנשיאת ציוד לשטח בקלות. מתקפלת עם ידית טלסקופית.",
+    "price": 210,
+    "originalPrice": 280,
+    "category": "אחר",
+    "status": "available",
+    "condition": "מצב תקין עם סימני שימוש",
+    "negotiable": true,
+    "featured": false,
+    "images": [
+      "/media/items/img-20260710-wa0019.jpeg"
+    ]
   }
 ]
