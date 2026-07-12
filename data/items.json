@@ -7,7 +7,6 @@
     "originalPrice": 1800,
     "category": "סלון ופינת אוכל",
     "status": "available",
-    "availableFrom": "",
     "condition": "מצב טוב מאוד",
     "dimensions": "140×85 ס״מ, נפתח ל-200 ס״מ",
     "negotiable": true,
@@ -64,7 +63,6 @@
     "originalPrice": 0,
     "category": "תאורה ודקורציה",
     "status": "sold",
-    "availableFrom": "",
     "condition": "מצב מצוין",
     "dimensions": "גובה 155 ס״מ",
     "negotiable": false,
@@ -74,5 +72,20 @@
       "/media/demo/floor-lamp.svg"
     ],
     "sortOrder": 40
+  },
+  {
+    "id": "3c748f2c-4729-4a56-8d05-fe704d27d1b6",
+    "title": "מדפי מונטסורי",
+    "description": "סט של 3 מדפי מונטסורי, מושלמים לילדים בגילאי שנה עד 4. המחיר הוא לכל השלושה יחד",
+    "price": 450,
+    "category": "ילדים",
+    "status": "sold",
+    "condition": "מצב טוב מאוד",
+    "negotiable": false,
+    "featured": false,
+    "pickup": "מצפרק ל3 חלקים",
+    "images": [
+      "/media/items/1783874813101.jpg"
+    ]
   }
 ]
