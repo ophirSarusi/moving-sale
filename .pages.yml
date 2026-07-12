@@ -8,89 +8,6 @@ media:
     categories: [image]
 
 content:
-  - name: site_settings
-    label: Website settings — usually do not edit
-    type: file
-    path: data/site.json
-    format: json
-    fields:
-      - name: brand
-        label: Short website name (Hebrew)
-        type: string
-        required: true
-      - name: title
-        label: Main headline (Hebrew)
-        type: string
-        required: true
-      - name: subtitle
-        label: Intro text (Hebrew)
-        type: text
-        required: true
-      - name: announcement
-        label: Temporary announcement (Hebrew)
-        type: string
-        description: Leave empty to hide it.
-      - name: location
-        label: Pickup area (Hebrew)
-        type: string
-        required: true
-      - name: pickupText
-        label: General pickup instructions (Hebrew)
-        type: string
-        required: true
-      - name: whatsapp
-        label: WhatsApp number
-        type: string
-        description: "International format, digits only. Example: 972541234567."
-        pattern:
-          regex: "^\\d{8,15}$"
-          message: Enter digits only, including the country code.
-      - name: currency
-        label: Currency
-        type: select
-        options:
-          values:
-            - name: ILS
-              label: Israeli shekel
-            - name: USD
-              label: US dollar
-            - name: EUR
-              label: Euro
-      - name: disclaimerTitle
-        label: Disclaimer heading (Hebrew)
-        type: string
-        required: true
-      - name: availabilityDisclaimer
-        label: Availability disclaimer (Hebrew)
-        type: text
-        required: true
-      - name: reservationDisclaimer
-        label: Reservation terms (Hebrew)
-        type: text
-        required: true
-      - name: pickupDisclaimer
-        label: Pickup and late-collection terms (Hebrew)
-        type: text
-        required: true
-      - name: footerTitle
-        label: Contact section heading (Hebrew)
-        type: string
-      - name: footerNote
-        label: Contact section text (Hebrew)
-        type: string
-      - name: updatedAt
-        label: Last updated date
-        type: date
-        default: ""
-        options:
-          format: yyyy-MM-dd
-      - name: showManageLink
-        label: Show the management link in the website footer
-        type: boolean
-      - name: manageUrl
-        label: Management system URL
-        type: string
-
   - name: sale_items
     label: Sale items
     type: file
@@ -205,6 +122,89 @@ content:
         description: Lower numbers appear first. Featured items always appear before other items.
         options:
           min: 0
+
+  - name: site_settings
+    label: Website settings — usually do not edit
+    type: file
+    path: data/site.json
+    format: json
+    fields:
+      - name: brand
+        label: Short website name (Hebrew)
+        type: string
+        required: true
+      - name: title
+        label: Main headline (Hebrew)
+        type: string
+        required: true
+      - name: subtitle
+        label: Intro text (Hebrew)
+        type: text
+        required: true
+      - name: announcement
+        label: Temporary announcement (Hebrew)
+        type: string
+        description: Leave empty to hide it.
+      - name: location
+        label: Pickup area (Hebrew)
+        type: string
+        required: true
+      - name: pickupText
+        label: General pickup instructions (Hebrew)
+        type: string
+        required: true
+      - name: whatsapp
+        label: WhatsApp number
+        type: string
+        description: "International format, digits only. Example: 972541234567."
+        pattern:
+          regex: "^\\d{8,15}$"
+          message: Enter digits only, including the country code.
+      - name: currency
+        label: Currency
+        type: select
+        options:
+          values:
+            - name: ILS
+              label: Israeli shekel
+            - name: USD
+              label: US dollar
+            - name: EUR
+              label: Euro
+      - name: disclaimerTitle
+        label: Disclaimer heading (Hebrew)
+        type: string
+        required: true
+      - name: availabilityDisclaimer
+        label: Availability disclaimer (Hebrew)
+        type: text
+        required: true
+      - name: reservationDisclaimer
+        label: Reservation terms (Hebrew)
+        type: text
+        required: true
+      - name: pickupDisclaimer
+        label: Pickup and late-collection terms (Hebrew)
+        type: text
+        required: true
+      - name: footerTitle
+        label: Contact section heading (Hebrew)
+        type: string
+      - name: footerNote
+        label: Contact section text (Hebrew)
+        type: string
+      - name: updatedAt
+        label: Last updated date
+        type: date
+        default: ""
+        options:
+          format: yyyy-MM-dd
+      - name: showManageLink
+        label: Show the management link in the website footer
+        type: boolean
+      - name: manageUrl
+        label: Management system URL
+        type: string
 
 settings:
   commit:
