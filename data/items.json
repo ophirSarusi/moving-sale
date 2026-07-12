@@ -116,5 +116,21 @@
     "images": [
       "/media/items/file00000000a1687246a245e1881568df26.png"
     ]
+  },
+  {
+    "id": "873540f6-57e1-40f7-9f4f-af7bb5ad6eba",
+    "title": "מצלמת דרך לרכב",
+    "description": "מצלמת דרך לרכב קדמית ואחורית של purecinema כולל כרטיס זכרון.\n\nהתקבלה במתנה ומיולם לא נעשה בה שממוש. הכל עדיין עטוף ובאריזה המקורית. \n\nנמכרת בחצי מהמחיר של חדש בזאפ.",
+    "price": 220,
+    "originalPrice": 450,
+    "category": "אחר",
+    "status": "available",
+    "condition": "חדש באריזה",
+    "negotiable": false,
+    "featured": false,
+    "images": [
+      "/media/items/20260612130742.jpg",
+      "/media/items/20260612130758.jpg"
+    ]
   }
 ]
