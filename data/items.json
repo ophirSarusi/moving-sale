@@ -1,21 +1,19 @@
 [
   {
     "id": "2b15911d-6a43-4987-a80c-fbd629dff70a",
-    "title": "שולחן אוכל נפתח",
-    "description": "שולחן עץ יציב ונוח שמתאים לשימוש יומיומי. נפתח בקלות ומתאים לאירוח של עד שמונה סועדים.",
-    "price": 650,
-    "originalPrice": 1800,
+    "title": "כיסאות בר מרופדים",
+    "description": "כיסאות בר נוחים עם מושב בד",
+    "price": 300,
     "category": "סלון ופינת אוכל",
     "status": "available",
     "condition": "מצב טוב מאוד",
-    "dimensions": "140×85 ס״מ, נפתח ל-200 ס״מ",
-    "negotiable": true,
-    "featured": true,
-    "pickup": "איסוף עצמי, נדרש רכב מתאים",
+    "negotiable": false,
+    "featured": false,
     "images": [
-      "/media/demo/dining-table.svg"
+      "/media/items/20260531153223.jpg",
+      "/media/items/20260531153212.jpg"
     ],
-    "sortOrder": 10
+    "sortOrder": 11
   },
   {
     "id": "14853b53-f10e-455b-b942-c9d4564af4f8",
