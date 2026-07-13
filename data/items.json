@@ -74,5 +74,22 @@
       "/media/items/20260612130742.jpg",
       "/media/items/20260612130758.jpg"
     ]
+  },
+  {
+    "id": "2c87eec3-407d-4eca-895d-fb0893079cc6",
+    "title": "משטח בוצ׳ר מעץ מלא",
+    "description": "משטח עץ מלא, מתאים למטבח, שולחן עבודה או פרויקט נגרות.",
+    "price": 300,
+    "category": "אחר",
+    "status": "available",
+    "condition": "מצב טוב",
+    "dimensions": "170 ס״מ אורך, 63.5 ס״מ עומק",
+    "negotiable": false,
+    "featured": false,
+    "pickup": "איסוף עצמי",
+    "images": [
+      "/media/items/20260612112304.jpg",
+      "/media/items/20260612112326.jpg"
+    ]
   }
 ]
