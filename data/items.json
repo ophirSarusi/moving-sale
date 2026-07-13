@@ -107,5 +107,19 @@
     "images": [
       "/media/items/img-20250817-wa0046.jpg"
     ]
+  },
+  {
+    "id": "c4f43726-32ab-4944-8eda-671b7b84f10d",
+    "title": "ארון מונטסורי לילדים",
+    "description": "ארון פתוח ונגיש בגובה שמתאים לילדים, עם מראה עגולה קטנה בצד.",
+    "price": 0,
+    "category": "ילדים",
+    "status": "available",
+    "dimensions": "80 ס״מ רוחב, 48 ס״מ עומק ו־123 ס״מ גובה.",
+    "negotiable": false,
+    "featured": false,
+    "images": [
+      "/media/items/20260612105708.jpg"
+    ]
   }
 ]
