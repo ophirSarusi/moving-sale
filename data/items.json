@@ -91,5 +91,19 @@
       "/media/items/20260612112304.jpg",
       "/media/items/20260612112326.jpg"
     ]
+  },
+  {
+    "id": "fae7e63d-d600-430a-9ebd-5f2f5bfea39b",
+    "title": "ספת פלטפורמה מעץ",
+    "description": "ספה בבנייה עצמית עם מזרן ספוג בגודל 90×200 ס״מ וכל הכריות שבתמונה. מידות הספה: 215 ס״מ אורך ו־95 ס״מ עומק. השמיכה לא כלולה.",
+    "price": 350,
+    "category": "סלון ופינת אוכל",
+    "status": "available",
+    "condition": "מצב טוב",
+    "negotiable": false,
+    "featured": false,
+    "images": [
+      "/media/items/img-20250817-wa0046.jpg"
+    ]
   }
 ]
