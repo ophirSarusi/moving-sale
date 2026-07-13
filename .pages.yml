@@ -13,115 +13,111 @@ content:
     type: file
     path: data/items.json
     format: json
-    list: true
     fields:
-      - name: id
-        label: Internal ID
-        type: uuid
-        options:
-          editable: false
-          generate: false
-      - name: title
-        label: Item name — Hebrew
-        type: string
-        required: true
-        description: Shopper-facing Hebrew. Use the ChatGPT prompt in ADMIN-GUIDE.md if starting from English notes.
-      - name: description
-        label: Description — Hebrew
-        type: text
-        required: true
-        description: Keep it friendly and concise. Mention useful details and any flaws honestly.
-      - name: price
-        label: Asking price
-        type: number
-        required: true
-        options:
-          min: 0
-      - name: originalPrice
-        label: Original or previous price (optional)
-        type: number
-        description: Leave at 0 if you do not want a crossed-out price.
-        options:
-          min: 0
-      - name: category
-        label: Category
-        type: select
-        required: true
-        options:
-          placeholder: Select a category
-          values:
-            - name: "סלון ופינת אוכל"
-              label: Living & dining room
-            - name: "חדר שינה"
-              label: Bedroom
-            - name: "ילדים"
-              label: Children
-            - name: "מטבח"
-              label: Kitchen
-            - name: "מוצרי חשמל"
-              label: Appliances
-            - name: "אחסון"
-              label: Storage
-            - name: "משרד"
-              label: Office
-            - name: "תאורה ודקורציה"
-              label: Lighting & decor
-            - name: "אחר"
-              label: Other
-      - name: status
-        label: Status
-        type: select
-        required: true
-        options:
-          placeholder: Select a status
-          values:
-            - name: available
-              label: Available
-            - name: reserved
-              label: Temporarily reserved
-            - name: sold
-              label: Sold
-      - name: availableFrom
-        label: Available from (optional)
-        type: date
-        default: ""
-        description: Leave empty if it is available immediately. The public website generates the Hebrew availability text automatically. Sold and reserved statuses override this text.
-        options:
-          format: yyyy-MM-dd
-      - name: condition
-        label: Condition — Hebrew
-        type: string
-        description: "Examples: מצב מצוין, מצב טוב מאוד, מצב טוב עם סימני שימוש."
-      - name: dimensions
-        label: Dimensions
-        type: string
-        description: "Numbers can be entered normally. Example: 140×85×75 cm."
-      - name: negotiable
-        label: Price is negotiable
-        type: boolean
-      - name: featured
-        label: Feature this item first
-        type: boolean
-      - name: pickup
-        label: Special pickup instructions — Hebrew
-        type: string
-        description: Leave empty to use the general pickup instructions.
-      - name: images
-        label: Photos
-        type: image
-        options:
-          media: item_images
-          multiple:
-            max: 8
-          unique: true
-          extensions: [jpg, jpeg, png, webp]
-          rename: safe
-      - name: sortOrder
-        label: Display order
-        type: number
-        description: Lower numbers appear first. Featured items always appear before other items.
-        options:
-          min: 0
+      - name: items
+        label: Items
+        type: object
+        description: Drag the handle beside an item to change its order. Click an item to open or close its fields.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title} · {status} · ₪{price}"
+        fields:
+          - name: id
+            type: uuid
+            hidden: true
+          - name: title
+            label: Item name — Hebrew
+            type: string
+            required: true
+            description: Shopper-facing Hebrew. Use the ChatGPT prompt in ADMIN-GUIDE.md if starting from English notes.
+          - name: images
+            label: Photos
+            type: image
+            options:
+              media: item_images
+              multiple:
+                max: 8
+              unique: true
+              extensions: [jpg, jpeg, png, webp]
+              rename: safe
+          - name: price
+            label: Asking price
+            type: number
+            required: true
+            options:
+              min: 0
+          - name: originalPrice
+            label: Original or previous price (optional)
+            type: number
+            description: Leave empty or set to 0 if you do not want a crossed-out price.
+            options:
+              min: 0
+          - name: category
+            label: Category
+            type: select
+            required: true
+            options:
+              placeholder: Select a category
+              values:
+                - name: "סלון ופינת אוכל"
+                  label: Living & dining room
+                - name: "חדר שינה"
+                  label: Bedroom
+                - name: "ילדים"
+                  label: Children
+                - name: "מטבח"
+                  label: Kitchen
+                - name: "מוצרי חשמל"
+                  label: Appliances
+                - name: "אחסון"
+                  label: Storage
+                - name: "משרד"
+                  label: Office
+                - name: "תאורה ודקורציה"
+                  label: Lighting & decor
+                - name: "אחר"
+                  label: Other
+          - name: status
+            label: Status
+            type: select
+            required: true
+            options:
+              placeholder: Select a status
+              values:
+                - name: available
+                  label: Available
+                - name: reserved
+                  label: Temporarily reserved
+                - name: sold
+                  label: Sold
+          - name: availableFrom
+            label: Available from (optional)
+            type: date
+            default: ""
+            description: Leave empty if it is available immediately. The public website generates the Hebrew availability text automatically.
+            options:
+              format: yyyy-MM-dd
+          - name: description
+            label: Description — Hebrew
+            type: text
+            required: true
+            description: Keep it friendly and concise. Mention useful details and any flaws honestly.
+          - name: condition
+            label: Condition — Hebrew (optional)
+            type: string
+            description: "Examples: מצב מצוין, מצב טוב מאוד, מצב טוב עם סימני שימוש."
+          - name: dimensions
+            label: Dimensions (optional)
+            type: string
+            description: "Numbers can be entered normally. Example: 140×85×75 cm."
+          - name: negotiable
+            label: Price is negotiable
+            type: boolean
+          - name: pickup
+            label: Special pickup instructions — Hebrew (optional)
+            type: string
+            description: Leave empty to use the general pickup instructions.
 
   - name: site_settings
     label: Website settings — usually do not edit

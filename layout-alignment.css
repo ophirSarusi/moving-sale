@@ -1,0 +1,15 @@
+.hero {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.hero__copy,
+.hero__subtitle {
+  width: 100%;
+  max-width: none;
+}
+
+.hero__actions {
+  padding-bottom: 0;
+}
