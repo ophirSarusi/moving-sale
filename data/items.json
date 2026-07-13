@@ -1,5 +1,21 @@
 [
   {
+    "id": "998dc767-edfe-42de-b0fd-a055a5eb1f33",
+    "title": "שטיח בגוון שיבולת שועל",
+    "description": "שטיח רך ונעים במצב מצוין, ללא כתמים.\nמושלם לחדר ילדים ולישיבה על הרצפה.",
+    "price": 300,
+    "originalPrice": 400,
+    "category": "חדר שינה",
+    "status": "available",
+    "dimensions": "133 x 195",
+    "negotiable": false,
+    "featured": true,
+    "images": [
+      "/media/items/fbimg1780322057237.jpg",
+      "/media/items/rug-250.jpg"
+    ]
+  },
+  {
     "id": "2b15911d-6a43-4987-a80c-fbd629dff70a",
     "title": "כיסאות בר מרופדים",
     "description": "כיסאות בר נוחים עם מושב בד.\nהמחיר הוא לכסא בודד",
@@ -106,22 +122,6 @@
     "featured": false,
     "images": [
       "/media/items/20260612105708.jpg"
-    ]
-  },
-  {
-    "id": "998dc767-edfe-42de-b0fd-a055a5eb1f33",
-    "title": "שטיח בגוון שיבולת שועל",
-    "description": "שטיח רך ונעים במצב מצוין, ללא כתמים.\nמושלם לחדר ילדים ולישיבה על הרצפה.",
-    "price": 300,
-    "originalPrice": 400,
-    "category": "חדר שינה",
-    "status": "available",
-    "dimensions": "133 x 195",
-    "negotiable": false,
-    "featured": true,
-    "images": [
-      "/media/items/fbimg1780322057237.jpg",
-      "/media/items/rug-250.jpg"
     ]
   },
   {
