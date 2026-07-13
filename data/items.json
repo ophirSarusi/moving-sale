@@ -1,175 +1,165 @@
-[
-  {
-    "id": "db1b7b35-e74b-4bc9-86b2-52f646503362",
-    "title": "מערכת ישיבה מודולרית למרפסת או לגינה",
-    "description": "סט ישיבה לגינה/מרפסת מסדרת NÄMMARÖ במצב מעולה.\n3 X כסא רגיל (בסיס + משענת + כריות) = 300 ש\"ח. \n3 X כסא פינתי (בסיס + 2 משענות + כריות) = 350 ש\"ח. \n1 X ספסל = 250 ש\"ח (מחיר רגיל חדש בחנות 345 ש\"ח).\nהמחיר למי שיקנה הכל יחד = 1950 בלבד (מחיר של סט כזה חדש הוא מעל 5000 ש\"ח).",
-    "price": 1950,
-    "originalPrice": 5663,
-    "category": "אחר",
-    "status": "available",
-    "negotiable": true,
-    "featured": false,
-    "images": [
-      "/media/items/whatsapp-image-2026-07-12-at-214426.jpeg",
-      "/media/items/whatsapp-image-2026-07-13-at-094307.jpeg",
-      "/media/items/whatsapp-image-2026-07-13-at-094342.jpeg",
-      "/media/items/whatsapp-image-2026-07-13-at-094200.jpeg"
-    ]
-  },
-  {
-    "id": "998dc767-edfe-42de-b0fd-a055a5eb1f33",
-    "title": "שטיח בגוון שיבולת שועל",
-    "description": "שטיח רך ונעים במצב מצוין, ללא כתמים.\nמושלם לחדר ילדים ולישיבה על הרצפה.",
-    "price": 300,
-    "originalPrice": 400,
-    "category": "חדר שינה",
-    "status": "available",
-    "dimensions": "133 x 195",
-    "negotiable": false,
-    "featured": false,
-    "images": [
-      "/media/items/fbimg1780322057237.jpg",
-      "/media/items/rug-250.jpg"
-    ]
-  },
-  {
-    "id": "2b15911d-6a43-4987-a80c-fbd629dff70a",
-    "title": "כיסאות בר מרופדים",
-    "description": "כיסאות בר נוחים עם מושב בד.\nהמחיר הוא לכסא בודד",
-    "price": 150,
-    "category": "סלון ופינת אוכל",
-    "status": "available",
-    "condition": "מצב טוב מאוד",
-    "negotiable": false,
-    "featured": false,
-    "images": [
-      "/media/items/20260531153223.jpg",
-      "/media/items/20260531153212.jpg"
-    ],
-    "sortOrder": 2
-  },
-  {
-    "id": "3c748f2c-4729-4a56-8d05-fe704d27d1b6",
-    "title": "מדפי מונטסורי",
-    "description": "סט של 3 מדפי מונטסורי, מושלמים לילדים בגילאי שנה עד 4. המחיר הוא לכל השלושה יחד",
-    "price": 450,
-    "category": "ילדים",
-    "status": "sold",
-    "condition": "מצב טוב מאוד",
-    "negotiable": false,
-    "featured": false,
-    "pickup": "מצפרק ל3 חלקים",
-    "images": [
-      "/media/items/1783874813101.jpg"
-    ]
-  },
-  {
-    "id": "b7f1a98a-6434-4024-84a5-3ab03f3df716",
-    "title": "עגלת שטח/קמפינג/חוף",
-    "description": "עגלה ענקית עם גלגלים רחבים במיוחד של חברת Discovery Adventures, לנשיאת ציוד לשטח בקלות. מתקפלת עם ידית טלסקופית.",
-    "price": 210,
-    "originalPrice": 280,
-    "category": "אחר",
-    "status": "available",
-    "condition": "מצב תקין עם סימני שימוש",
-    "negotiable": true,
-    "featured": false,
-    "images": [
-      "/media/items/img-20260710-wa0019.jpeg"
-    ]
-  },
-  {
-    "id": "2c87eec3-407d-4eca-895d-fb0893079cc6",
-    "title": "משטח בוצ׳ר מעץ מלא",
-    "description": "משטח עץ מלא, מתאים למטבח, שולחן עבודה או פרויקט נגרות.",
-    "price": 300,
-    "category": "אחר",
-    "status": "available",
-    "condition": "מצב טוב",
-    "dimensions": "170 ס״מ אורך, 63.5 ס״מ עומק",
-    "negotiable": false,
-    "featured": false,
-    "pickup": "איסוף עצמי",
-    "images": [
-      "/media/items/20260612112304.jpg",
-      "/media/items/20260612112326.jpg"
-    ]
-  },
-  {
-    "id": "fae7e63d-d600-430a-9ebd-5f2f5bfea39b",
-    "title": "כריות רצפה גדולות",
-    "description": "כריות גדולות ונוחות, מושלמות לישיבה על הרצפה או למיטת יום כמו בתמונה\nהמחיר הוא לכרית אחת (הגדולות בתמונה), ויש 3 כריות כאלו בסך הכול",
-    "price": 50,
-    "originalPrice": 175,
-    "category": "סלון ופינת אוכל",
-    "status": "available",
-    "condition": "מצב טוב",
-    "dimensions": "65 x 65",
-    "negotiable": false,
-    "featured": false,
-    "images": [
-      "/media/items/img-20250817-wa0046.jpg"
-    ]
-  },
-  {
-    "id": "c4f43726-32ab-4944-8eda-671b7b84f10d",
-    "title": "ארון מונטסורי לילדים",
-    "description": "ארון פתוח ונגיש בגובה שמתאים לילדים, עם מראה עגולה קטנה בצד.",
-    "price": 300,
-    "category": "ילדים",
-    "status": "available",
-    "dimensions": "80 ס״מ רוחב, 48 ס״מ עומק ו־123 ס״מ גובה.",
-    "negotiable": false,
-    "featured": false,
-    "images": [
-      "/media/items/20260612105708.jpg"
-    ]
-  },
-  {
-    "id": "873540f6-57e1-40f7-9f4f-af7bb5ad6eba",
-    "title": "מצלמת דרך לרכב",
-    "description": "מצלמת דרך לרכב קדמית ואחורית של purecinema כולל כרטיס זכרון.\n\nהתקבלה במתנה ומיולם לא נעשה בה שממוש. הכל עדיין עטוף ובאריזה המקורית. \n\nנמכרת בחצי מהמחיר של חדש בזאפ.",
-    "price": 220,
-    "originalPrice": 450,
-    "category": "אחר",
-    "status": "available",
-    "condition": "חדש באריזה",
-    "negotiable": false,
-    "featured": false,
-    "images": [
-      "/media/items/20260612130742.jpg",
-      "/media/items/20260612130758.jpg"
-    ]
-  },
-  {
-    "id": "498ed608-f2ed-4823-8717-f69b02724a16",
-    "title": "תאורת סטודיו LED של Nanlite 40",
-    "description": "מושלם ליוצרי תוכן או לצילומי תדמית מקצועיים.\nכמו חדש, היה בשימוש רק כ-3 שעות במצטבר! נמכר עקב הסבה מקצועית.\nמגיע עם הקופסה המקורית. המחיר ליחידה ויש 2 כאלו. יש גמישות למי שיקנה את שניהם.",
-    "price": 410,
-    "originalPrice": 589,
-    "category": "אחר",
-    "status": "available",
-    "condition": "כמו חדש",
-    "negotiable": false,
-    "featured": false,
-    "images": [
-      "/media/items/70529774316979448747343425531057281975362979n.jpg",
-      "/media/items/70585478617342245746051661843091466792222361n.jpg",
-      "/media/items/70647382420505179255411692975455031588568086n.jpg"
-    ]
-  },
-  {
-    "id": "a8a5adc3-71e3-43c8-a828-88ea042fe894",
-    "title": "פלאש חיצוני YN650III של yongnuo",
-    "description": "פלאש חיצוני YN650III של yongnuo.\n\nנקנה חדש בהתלהבות אחרי קורס צילום עם תאורה אבל בפועל נעשה בו שימוש פעמיים.\n\nבמצב מעולה כמובן, מגיע עם פילטרים צבעוניים בעשרות צבעים.",
-    "price": 180,
-    "category": "אחר",
-    "status": "available",
-    "condition": "כמו חדש",
-    "negotiable": false,
-    "featured": false,
-    "images": [
-      "/media/items/file00000000a1687246a245e1881568df26.png"
-    ]
-  }
-]
+{
+  "items": [
+    {
+      "id": "db1b7b35-e74b-4bc9-86b2-52f646503362",
+      "title": "מערכת ישיבה מודולרית למרפסת או לגינה",
+      "description": "סט ישיבה לגינה/מרפסת מסדרת NÄMMARÖ במצב מעולה.\n3 X כסא רגיל (בסיס + משענת + כריות) = 300 ש\"ח. \n3 X כסא פינתי (בסיס + 2 משענות + כריות) = 350 ש\"ח. \n1 X ספסל = 250 ש\"ח (מחיר רגיל חדש בחנות 345 ש\"ח).\nהמחיר למי שיקנה הכל יחד = 1950 בלבד (מחיר של סט כזה חדש הוא מעל 5000 ש\"ח).",
+      "price": 1950,
+      "originalPrice": 5663,
+      "category": "אחר",
+      "status": "available",
+      "negotiable": true,
+      "images": [
+        "/media/items/whatsapp-image-2026-07-12-at-214426.jpeg",
+        "/media/items/whatsapp-image-2026-07-13-at-094307.jpeg",
+        "/media/items/whatsapp-image-2026-07-13-at-094342.jpeg",
+        "/media/items/whatsapp-image-2026-07-13-at-094200.jpeg"
+      ]
+    },
+    {
+      "id": "998dc767-edfe-42de-b0fd-a055a5eb1f33",
+      "title": "שטיח בגוון שיבולת שועל",
+      "description": "שטיח רך ונעים במצב מצוין, ללא כתמים.\nמושלם לחדר ילדים ולישיבה על הרצפה.",
+      "price": 300,
+      "originalPrice": 400,
+      "category": "חדר שינה",
+      "status": "available",
+      "dimensions": "133 x 195",
+      "negotiable": false,
+      "images": [
+        "/media/items/fbimg1780322057237.jpg",
+        "/media/items/rug-250.jpg"
+      ]
+    },
+    {
+      "id": "2b15911d-6a43-4987-a80c-fbd629dff70a",
+      "title": "כיסאות בר מרופדים",
+      "description": "כיסאות בר נוחים עם מושב בד.\nהמחיר הוא לכסא בודד",
+      "price": 150,
+      "category": "סלון ופינת אוכל",
+      "status": "available",
+      "condition": "מצב טוב מאוד",
+      "negotiable": false,
+      "images": [
+        "/media/items/20260531153223.jpg",
+        "/media/items/20260531153212.jpg"
+      ]
+    },
+    {
+      "id": "3c748f2c-4729-4a56-8d05-fe704d27d1b6",
+      "title": "מדפי מונטסורי",
+      "description": "סט של 3 מדפי מונטסורי, מושלמים לילדים בגילאי שנה עד 4. המחיר הוא לכל השלושה יחד",
+      "price": 450,
+      "category": "ילדים",
+      "status": "sold",
+      "condition": "מצב טוב מאוד",
+      "negotiable": false,
+      "pickup": "מצפרק ל3 חלקים",
+      "images": [
+        "/media/items/1783874813101.jpg"
+      ]
+    },
+    {
+      "id": "b7f1a98a-6434-4024-84a5-3ab03f3df716",
+      "title": "עגלת שטח/קמפינג/חוף",
+      "description": "עגלה ענקית עם גלגלים רחבים במיוחד של חברת Discovery Adventures, לנשיאת ציוד לשטח בקלות. מתקפלת עם ידית טלסקופית.",
+      "price": 210,
+      "originalPrice": 280,
+      "category": "אחר",
+      "status": "available",
+      "condition": "מצב תקין עם סימני שימוש",
+      "negotiable": true,
+      "images": [
+        "/media/items/img-20260710-wa0019.jpeg"
+      ]
+    },
+    {
+      "id": "2c87eec3-407d-4eca-895d-fb0893079cc6",
+      "title": "משטח בוצ׳ר מעץ מלא",
+      "description": "משטח עץ מלא, מתאים למטבח, שולחן עבודה או פרויקט נגרות.",
+      "price": 300,
+      "category": "אחר",
+      "status": "available",
+      "condition": "מצב טוב",
+      "dimensions": "170 ס״מ אורך, 63.5 ס״מ עומק",
+      "negotiable": false,
+      "pickup": "איסוף עצמי",
+      "images": [
+        "/media/items/20260612112304.jpg",
+        "/media/items/20260612112326.jpg"
+      ]
+    },
+    {
+      "id": "fae7e63d-d600-430a-9ebd-5f2f5bfea39b",
+      "title": "כריות רצפה גדולות",
+      "description": "כריות גדולות ונוחות, מושלמות לישיבה על הרצפה או למיטת יום כמו בתמונה\nהמחיר הוא לכרית אחת (הגדולות בתמונה), ויש 3 כריות כאלו בסך הכול",
+      "price": 50,
+      "originalPrice": 175,
+      "category": "סלון ופינת אוכל",
+      "status": "available",
+      "condition": "מצב טוב",
+      "dimensions": "65 x 65",
+      "negotiable": false,
+      "images": [
+        "/media/items/img-20250817-wa0046.jpg"
+      ]
+    },
+    {
+      "id": "c4f43726-32ab-4944-8eda-671b7b84f10d",
+      "title": "ארון מונטסורי לילדים",
+      "description": "ארון פתוח ונגיש בגובה שמתאים לילדים, עם מראה עגולה קטנה בצד.",
+      "price": 300,
+      "category": "ילדים",
+      "status": "available",
+      "dimensions": "80 ס״מ רוחב, 48 ס״מ עומק ו־123 ס״מ גובה.",
+      "negotiable": false,
+      "images": [
+        "/media/items/20260612105708.jpg"
+      ]
+    },
+    {
+      "id": "873540f6-57e1-40f7-9f4f-af7bb5ad6eba",
+      "title": "מצלמת דרך לרכב",
+      "description": "מצלמת דרך לרכב קדמית ואחורית של purecinema כולל כרטיס זכרון.\n\nהתקבלה במתנה ומיולם לא נעשה בה שממוש. הכל עדיין עטוף ובאריזה המקורית. \n\nנמכרת בחצי מהמחיר של חדש בזאפ.",
+      "price": 220,
+      "originalPrice": 450,
+      "category": "אחר",
+      "status": "available",
+      "condition": "חדש באריזה",
+      "negotiable": false,
+      "images": [
+        "/media/items/20260612130742.jpg",
+        "/media/items/20260612130758.jpg"
+      ]
+    },
+    {
+      "id": "498ed608-f2ed-4823-8717-f69b02724a16",
+      "title": "תאורת סטודיו LED של Nanlite 40",
+      "description": "מושלם ליוצרי תוכן או לצילומי תדמית מקצועיים.\nכמו חדש, היה בשימוש רק כ-3 שעות במצטבר! נמכר עקב הסבה מקצועית.\nמגיע עם הקופסה המקורית. המחיר ליחידה ויש 2 כאלו. יש גמישות למי שיקנה את שניהם.",
+      "price": 410,
+      "originalPrice": 589,
+      "category": "אחר",
+      "status": "available",
+      "condition": "כמו חדש",
+      "negotiable": false,
+      "images": [
+        "/media/items/70529774316979448747343425531057281975362979n.jpg",
+        "/media/items/70585478617342245746051661843091466792222361n.jpg",
+        "/media/items/70647382420505179255411692975455031588568086n.jpg"
+      ]
+    },
+    {
+      "id": "a8a5adc3-71e3-43c8-a828-88ea042fe894",
+      "title": "פלאש חיצוני YN650III של yongnuo",
+      "description": "פלאש חיצוני YN650III של yongnuo.\n\nנקנה חדש בהתלהבות אחרי קורס צילום עם תאורה אבל בפועל נעשה בו שימוש פעמיים.\n\nבמצב מעולה כמובן, מגיע עם פילטרים צבעוניים בעשרות צבעים.",
+      "price": 180,
+      "category": "אחר",
+      "status": "available",
+      "condition": "כמו חדש",
+      "negotiable": false,
+      "images": [
+        "/media/items/file00000000a1687246a245e1881568df26.png"
+      ]
+    }
+  ]
+}
