@@ -2,7 +2,7 @@
   {
     "id": "2b15911d-6a43-4987-a80c-fbd629dff70a",
     "title": "כיסאות בר מרופדים",
-    "description": "כיסאות בר נוחים עם מושב בד.\nהמחיר הוא לכסא",
+    "description": "כיסאות בר נוחים עם מושב בד.\nהמחיר הוא לכסא בודד",
     "price": 150,
     "category": "סלון ופינת אוכל",
     "status": "available",
@@ -43,20 +43,6 @@
     "featured": false,
     "images": [
       "/media/items/img-20260710-wa0019.jpeg"
-    ]
-  },
-  {
-    "id": "a8a5adc3-71e3-43c8-a828-88ea042fe894",
-    "title": "פלאש חיצוני YN650III של yongnuo",
-    "description": "פלאש חיצוני YN650III של yongnuo.\n\nנקנה חדש בהתלהבות אחרי קורס צילום עם תאורה אבל בפועל נעשה בו שימוש פעמיים.\n\nבמצב מעולה כמובן, מגיע עם פילטרים צבעוניים בעשרות צבעים.",
-    "price": 180,
-    "category": "אחר",
-    "status": "available",
-    "condition": "כמו חדש",
-    "negotiable": false,
-    "featured": false,
-    "images": [
-      "/media/items/file00000000a1687246a245e1881568df26.png"
     ]
   },
   {
@@ -132,7 +118,7 @@
     "status": "available",
     "dimensions": "133 x 195",
     "negotiable": false,
-    "featured": false,
+    "featured": true,
     "images": [
       "/media/items/fbimg1780322057237.jpg",
       "/media/items/rug-250.jpg"
@@ -156,6 +142,20 @@
     ]
   },
   {
+    "id": "a8a5adc3-71e3-43c8-a828-88ea042fe894",
+    "title": "פלאש חיצוני YN650III של yongnuo",
+    "description": "פלאש חיצוני YN650III של yongnuo.\n\nנקנה חדש בהתלהבות אחרי קורס צילום עם תאורה אבל בפועל נעשה בו שימוש פעמיים.\n\nבמצב מעולה כמובן, מגיע עם פילטרים צבעוניים בעשרות צבעים.",
+    "price": 180,
+    "category": "אחר",
+    "status": "available",
+    "condition": "כמו חדש",
+    "negotiable": false,
+    "featured": false,
+    "images": [
+      "/media/items/file00000000a1687246a245e1881568df26.png"
+    ]
+  },
+  {
     "id": "db1b7b35-e74b-4bc9-86b2-52f646503362",
     "title": "מערכת ישיבה מודולרית למרפסת או לגינה",
     "description": "סט ישיבה לגינה/מרפסת מסדרת NÄMMARÖ במצב מעולה.\n3 X כסא רגיל (בסיס + משענת + כריות) = 300 ש\"ח. \n3 X כסא פינתי (בסיס + 2 משענות + כריות) = 350 ש\"ח. \n1 X ספסל = 250 ש\"ח (מחיר רגיל חדש בחנות 345 ש\"ח).\nהמחיר למי שיקנה הכל יחד = 1950 בלבד (מחיר של סט כזה חדש הוא מעל 5000 ש\"ח).",
@@ -164,7 +164,7 @@
     "category": "אחר",
     "status": "available",
     "negotiable": true,
-    "featured": false,
+    "featured": true,
     "images": [
       "/media/items/whatsapp-image-2026-07-12-at-214426.jpeg",
       "/media/items/whatsapp-image-2026-07-13-at-094307.jpeg",
