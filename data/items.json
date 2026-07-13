@@ -112,7 +112,7 @@
     "id": "c4f43726-32ab-4944-8eda-671b7b84f10d",
     "title": "ארון מונטסורי לילדים",
     "description": "ארון פתוח ונגיש בגובה שמתאים לילדים, עם מראה עגולה קטנה בצד.",
-    "price": 0,
+    "price": 300,
     "category": "ילדים",
     "status": "available",
     "dimensions": "80 ס״מ רוחב, 48 ס״מ עומק ו־123 ס״מ גובה.",
@@ -120,6 +120,21 @@
     "featured": false,
     "images": [
       "/media/items/20260612105708.jpg"
+    ]
+  },
+  {
+    "id": "998dc767-edfe-42de-b0fd-a055a5eb1f33",
+    "title": "שטיח בגוון שיבולת שועל",
+    "description": "שטיח רך ונעים, מושלם לחדר ילדים ולישיבה על הרצפה.",
+    "price": 300,
+    "category": "חדר שינה",
+    "status": "available",
+    "dimensions": "133 x 195",
+    "negotiable": false,
+    "featured": false,
+    "images": [
+      "/media/items/fbimg1780322057237.jpg",
+      "/media/items/rug-250.jpg"
     ]
   }
 ]
