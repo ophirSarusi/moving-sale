@@ -16,62 +16,6 @@
     "sortOrder": 2
   },
   {
-    "id": "14853b53-f10e-455b-b942-c9d4564af4f8",
-    "title": "כורסה ירוקה",
-    "description": "כורסה נוחה עם בד נעים, מתאימה לסלון או לפינת קריאה. ללא קרעים או כתמים משמעותיים.",
-    "price": 350,
-    "originalPrice": 950,
-    "category": "סלון ופינת אוכל",
-    "status": "available",
-    "availableFrom": "2026-07-20",
-    "condition": "מצב טוב",
-    "dimensions": "רוחב 78 ס״מ, עומק 82 ס״מ",
-    "negotiable": false,
-    "featured": false,
-    "pickup": "איסוף עצמי",
-    "images": [
-      "/media/demo/armchair.svg"
-    ],
-    "sortOrder": 20
-  },
-  {
-    "id": "6b26ace8-18a5-4bc4-bb1d-8b3c888fae4a",
-    "title": "שידת מגירות לילדים",
-    "description": "שידה מרווחת ונוחה עם ארבע מגירות. יש סימני שימוש קלים בחלק העליון.",
-    "price": 220,
-    "originalPrice": 600,
-    "category": "ילדים",
-    "status": "reserved",
-    "availableFrom": "2026-08-01",
-    "condition": "מצב טוב עם סימני שימוש",
-    "dimensions": "90×80×45 ס״מ",
-    "negotiable": true,
-    "featured": false,
-    "pickup": "איסוף עצמי",
-    "images": [
-      "/media/demo/dresser.svg"
-    ],
-    "sortOrder": 30
-  },
-  {
-    "id": "5eaf8b5e-267b-4d75-a3af-876da0bf16aa",
-    "title": "מנורת רצפה",
-    "description": "מנורת רצפה מינימליסטית עם אור חם. עובדת באופן תקין ומגיעה עם נורה.",
-    "price": 90,
-    "originalPrice": 0,
-    "category": "תאורה ודקורציה",
-    "status": "sold",
-    "condition": "מצב מצוין",
-    "dimensions": "גובה 155 ס״מ",
-    "negotiable": false,
-    "featured": false,
-    "pickup": "איסוף עצמי",
-    "images": [
-      "/media/demo/floor-lamp.svg"
-    ],
-    "sortOrder": 40
-  },
-  {
     "id": "3c748f2c-4729-4a56-8d05-fe704d27d1b6",
     "title": "מדפי מונטסורי",
     "description": "סט של 3 מדפי מונטסורי, מושלמים לילדים בגילאי שנה עד 4. המחיר הוא לכל השלושה יחד",
