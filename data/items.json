@@ -94,12 +94,14 @@
   },
   {
     "id": "fae7e63d-d600-430a-9ebd-5f2f5bfea39b",
-    "title": "ספת פלטפורמה מעץ",
-    "description": "ספה בבנייה עצמית עם מזרן ספוג בגודל 90×200 ס״מ וכל הכריות שבתמונה. מידות הספה: 215 ס״מ אורך ו־95 ס״מ עומק. השמיכה לא כלולה.",
-    "price": 350,
+    "title": "כריות רצפה גדולות",
+    "description": "כריות גדולות ונוחות, מושלמות לישיבה על הרצפה או למיטת יום כמו בתמונה.",
+    "price": 50,
+    "originalPrice": 175,
     "category": "סלון ופינת אוכל",
     "status": "available",
     "condition": "מצב טוב",
+    "dimensions": "65 x 65",
     "negotiable": false,
     "featured": false,
     "images": [
