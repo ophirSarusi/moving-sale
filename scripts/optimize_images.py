@@ -7,7 +7,7 @@ import io
 import json
 from pathlib import Path
 
-from PIL import Image, ImageOps
+from PIL import Image, ImageFile, ImageOps, UnidentifiedImageError
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_DIR = ROOT / "media" / "items"
@@ -18,6 +18,11 @@ VARIANTS = {
     "card": {"max_edge": 640, "quality": 78},
     "dialog": {"max_edge": 1280, "quality": 82},
 }
+
+# Phone exports and messaging apps sometimes leave a few trailing bytes missing
+# even though the visible image data is intact. Pillow can safely decode those
+# minor truncations instead of aborting the entire optimization batch.
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
 def iter_sources() -> list[Path]:
@@ -101,28 +106,41 @@ def main() -> None:
     expected: set[Path] = set()
     manifest: dict[str, dict[str, str]] = {}
     changed = 0
+    processed = 0
+    skipped: list[tuple[str, str]] = []
     original_bytes = 0
     optimized_bytes = 0
 
     for source in sources:
-        original_bytes += source.stat().st_size
         relative_source = source.relative_to(SOURCE_DIR).as_posix()
         original_key = f"media/items/{relative_source}"
+
+        try:
+            encoded_variants = {
+                variant: encode_variant(source, **settings)
+                for variant, settings in VARIANTS.items()
+            }
+        except (OSError, UnidentifiedImageError, ValueError) as error:
+            skipped.append((relative_source, str(error)))
+            print(f"Warning: skipped {relative_source}: {error}")
+            continue
+
+        processed += 1
+        original_bytes += source.stat().st_size
         manifest[original_key] = {}
 
-        for variant, settings in VARIANTS.items():
+        for variant, encoded in encoded_variants.items():
             destination = output_path(source, variant)
             expected.add(destination)
             manifest[original_key][variant] = destination.relative_to(ROOT).as_posix()
-            encoded = encode_variant(source, **settings)
             optimized_bytes += len(encoded)
             changed += int(write_if_changed(destination, encoded))
 
     changed += int(write_manifest(manifest))
     removed = remove_stale_outputs(expected)
     print(
-        f"Processed {len(sources)} originals into {len(expected)} derivatives; "
-        f"updated {changed}, removed {removed}."
+        f"Processed {processed}/{len(sources)} originals into {len(expected)} derivatives; "
+        f"updated {changed}, removed {removed}, skipped {len(skipped)}."
     )
     if original_bytes:
         ratio = optimized_bytes / original_bytes
