@@ -1,3 +1,12 @@
+.item-card__image {
+  touch-action: pan-y;
+}
+
+.item-card__image img {
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
 .card-gallery-arrow {
   position: absolute;
   z-index: 5;
