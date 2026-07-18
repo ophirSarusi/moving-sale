@@ -62,6 +62,7 @@ function enhanceCards(itemsByTitle, phone) {
     const item = itemsByTitle.get(title);
     if (!item) return;
 
+    removeCardStatusBadge(card);
     updateCardAvailability(card, item);
 
     if (item.status === "sold") {
@@ -100,10 +101,35 @@ function enhanceCards(itemsByTitle, phone) {
   });
 }
 
+function removeCardStatusBadge(card) {
+  card.querySelector(".item-card__topline .status-badge")?.remove();
+}
+
 function updateCardAvailability(card, item) {
-  const value = card.querySelector(".item-card__availability strong");
-  const nextText = getAvailabilityText(item);
-  if (value && value.textContent !== nextText) value.textContent = nextText;
+  const availability = card.querySelector(".item-card__availability");
+  if (!availability) return;
+
+  availability.querySelector(":scope > span")?.remove();
+
+  let value = availability.querySelector("strong");
+  if (!value) {
+    value = document.createElement("strong");
+    availability.appendChild(value);
+  }
+
+  const nextText = getCardAvailabilityText(item);
+  if (value.textContent !== nextText) value.textContent = nextText;
+
+  availability.classList.remove(
+    "item-card__availability--available",
+    "item-card__availability--reserved",
+    "item-card__availability--sold"
+  );
+
+  const status = item.status === "reserved" || item.status === "sold"
+    ? item.status
+    : "available";
+  availability.classList.add(`item-card__availability--${status}`);
 }
 
 function enhanceReservedCard(card, item) {
@@ -114,22 +140,15 @@ function enhanceReservedCard(card, item) {
   );
 
   const details = card.querySelector(".details-link");
-  if (details && details.textContent !== "רוצים להיות הבאים בתור?") {
-    details.textContent = "רוצים להיות הבאים בתור?";
+  if (details && details.textContent !== "לפרטים ←") {
+    details.textContent = "לפרטים ←";
   }
 
   const image = card.querySelector(".item-card__image");
   if (image && !image.querySelector(".reserved-waitlist-badge")) {
     const badge = document.createElement("span");
     badge.className = "reserved-waitlist-badge";
-
-    const title = document.createElement("strong");
-    title.textContent = "שמור זמנית";
-
-    const note = document.createElement("span");
-    note.textContent = "אפשר להצטרף לרשימת ההמתנה";
-
-    badge.append(title, note);
+    badge.textContent = "שמור זמנית";
     image.appendChild(badge);
   }
 }
@@ -237,6 +256,19 @@ function updateDialogAvailability(item) {
   });
 }
 
+function getCardAvailabilityText(item) {
+  if (item.status === "sold") return "נמכר";
+  if (item.status === "reserved") return "שמור זמנית · רשימת המתנה פתוחה";
+
+  const availableFrom = parseDateOnly(item.availableFrom);
+  const dateText = availableFrom ? formatDateOnly(availableFrom) : "";
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const futureDate = availableFrom && availableFrom > today;
+
+  return futureDate ? `זמין מ־${dateText}` : "זמין מיידית";
+}
+
 function getAvailabilityText(item) {
   if (item.status === "sold") return "לא זמין";
 
@@ -248,8 +280,8 @@ function getAvailabilityText(item) {
 
   if (item.status === "reserved") {
     return futureDate
-      ? `שמור כרגע — אם יתפנה, איסוף החל מ־${dateText}`
-      : "שמור כרגע — אפשר להצטרף לרשימת ההמתנה";
+      ? `שמור זמנית — אם יתפנה, איסוף מ־${dateText}`
+      : "שמור זמנית — רשימת המתנה פתוחה";
   }
 
   return futureDate ? `זמין החל מ־${dateText}` : "זמין מיידית";
