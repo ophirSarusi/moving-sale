@@ -62,9 +62,11 @@ function enhanceCards(itemsByTitle, phone) {
     const item = itemsByTitle.get(title);
     if (!item) return;
 
+    removeCardStatusBadge(card);
     updateCardAvailability(card, item);
 
     if (item.status === "sold") {
+      clearReservedCard(card, item);
       enhanceSoldCard(card, item);
       card.querySelector(".item-card__whatsapp")?.remove();
       return;
@@ -72,6 +74,12 @@ function enhanceCards(itemsByTitle, phone) {
 
     card.classList.remove("item-card--sold-enhanced");
     if (card.hasAttribute("aria-disabled")) card.removeAttribute("aria-disabled");
+
+    if (item.status === "reserved") {
+      enhanceReservedCard(card, item);
+    } else {
+      clearReservedCard(card, item);
+    }
 
     if (!phone || card.querySelector(".item-card__whatsapp")) return;
 
@@ -83,7 +91,7 @@ function enhanceCards(itemsByTitle, phone) {
     link.setAttribute("aria-label", `פתיחת וואטסאפ לגבי ${item.title}`);
 
     const label = item.status === "reserved"
-      ? "לבדוק אם התפנה"
+      ? "הצטרפות לרשימת ההמתנה"
       : "אני רוצה! בוואטסאפ";
 
     link.innerHTML = `${ITEM_WHATSAPP_ICON}<span>${label}</span>`;
@@ -93,10 +101,70 @@ function enhanceCards(itemsByTitle, phone) {
   });
 }
 
+function removeCardStatusBadge(card) {
+  card.querySelector(".item-card__topline .status-badge")?.remove();
+}
+
 function updateCardAvailability(card, item) {
-  const value = card.querySelector(".item-card__availability strong");
-  const nextText = getAvailabilityText(item);
-  if (value && value.textContent !== nextText) value.textContent = nextText;
+  const availability = card.querySelector(".item-card__availability");
+  if (!availability) return;
+
+  availability.querySelector(":scope > span")?.remove();
+
+  let value = availability.querySelector("strong");
+  if (!value) {
+    value = document.createElement("strong");
+    availability.appendChild(value);
+  }
+
+  const nextText = getCardAvailabilityText(item);
+  if (value.textContent !== nextText) value.textContent = nextText;
+
+  availability.classList.remove(
+    "item-card__availability--available",
+    "item-card__availability--reserved",
+    "item-card__availability--sold"
+  );
+
+  const status = item.status === "reserved" || item.status === "sold"
+    ? item.status
+    : "available";
+  availability.classList.add(`item-card__availability--${status}`);
+}
+
+function enhanceReservedCard(card, item) {
+  card.classList.add("item-card--reserved-enhanced");
+  card.setAttribute(
+    "aria-label",
+    `פתיחת פרטים על ${item.title}; הפריט שמור זמנית ואפשר להצטרף לרשימת ההמתנה`
+  );
+
+  const details = card.querySelector(".details-link");
+  if (details && details.textContent !== "לפרטים ←") {
+    details.textContent = "לפרטים ←";
+  }
+
+  const image = card.querySelector(".item-card__image");
+  if (image && !image.querySelector(".reserved-waitlist-badge")) {
+    const badge = document.createElement("span");
+    badge.className = "reserved-waitlist-badge";
+    badge.textContent = "שמור זמנית";
+    image.appendChild(badge);
+  }
+}
+
+function clearReservedCard(card, item) {
+  card.classList.remove("item-card--reserved-enhanced");
+  card.querySelector(".reserved-waitlist-badge")?.remove();
+
+  const details = card.querySelector(".details-link");
+  if (details && details.textContent !== "לפרטים ←") {
+    details.textContent = "לפרטים ←";
+  }
+
+  if (item.status !== "sold") {
+    card.setAttribute("aria-label", `פתיחת פרטים על ${item.title}`);
+  }
 }
 
 function enhanceSoldCard(card, item) {
@@ -133,6 +201,7 @@ function enhanceDialog(items, phone) {
   if (!item) return;
 
   updateDialogAvailability(item);
+  updateReservedDialogNote(item);
 
   const button = document.getElementById("dialogWhatsapp");
   if (!button) return;
@@ -150,13 +219,32 @@ function enhanceDialog(items, phone) {
 
   const expectedHref = createItemWhatsappLink(phone, item);
   const expectedLabel = item.status === "reserved"
-    ? "לבדוק אם התפנה בוואטסאפ"
+    ? "הצטרפות לרשימת ההמתנה"
     : "אני רוצה! בוואטסאפ";
 
   if (button.hasAttribute("aria-disabled")) button.removeAttribute("aria-disabled");
   if (button.getAttribute("href") !== expectedHref) button.setAttribute("href", expectedHref);
   if (button.textContent !== expectedLabel) button.textContent = expectedLabel;
   button.setAttribute("aria-label", `פתיחת וואטסאפ לגבי ${item.title}`);
+}
+
+function updateReservedDialogNote(item) {
+  const details = document.querySelector(".dialog-details");
+  if (!details) return;
+
+  let note = details.querySelector(".reserved-waitlist-note");
+  if (item.status !== "reserved") {
+    note?.remove();
+    return;
+  }
+
+  if (!note) {
+    note = document.createElement("p");
+    note.className = "reserved-waitlist-note";
+    details.querySelector(".dialog-description")?.insertAdjacentElement("afterend", note);
+  }
+
+  note.textContent = "הפריט שמור כרגע. אפשר להשאיר הודעה ונעדכן אם הוא יתפנה.";
 }
 
 function updateDialogAvailability(item) {
@@ -166,6 +254,19 @@ function updateDialogAvailability(item) {
     const nextText = getAvailabilityText(item);
     if (value && value.textContent !== nextText) value.textContent = nextText;
   });
+}
+
+function getCardAvailabilityText(item) {
+  if (item.status === "sold") return "נמכר";
+  if (item.status === "reserved") return "שמור זמנית · רשימת המתנה פתוחה";
+
+  const availableFrom = parseDateOnly(item.availableFrom);
+  const dateText = availableFrom ? formatDateOnly(availableFrom) : "";
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const futureDate = availableFrom && availableFrom > today;
+
+  return futureDate ? `זמין מ־${dateText}` : "זמין מיידית";
 }
 
 function getAvailabilityText(item) {
@@ -179,8 +280,8 @@ function getAvailabilityText(item) {
 
   if (item.status === "reserved") {
     return futureDate
-      ? `אם יתפנה — החל מ־${dateText}`
-      : "כרגע שמור — אפשר לבדוק אם התפנה";
+      ? `שמור זמנית — אם יתפנה, איסוף מ־${dateText}`
+      : "שמור זמנית — רשימת המתנה פתוחה";
   }
 
   return futureDate ? `זמין החל מ־${dateText}` : "זמין מיידית";
@@ -204,7 +305,7 @@ function formatDateOnly(date) {
 
 function createItemWhatsappLink(phone, item) {
   const message = item.status === "reserved"
-    ? `היי! ראיתי את "${item.title}" שמסומן כשמור זמנית. אשמח לדעת אם הוא התפנה 😊`
+    ? `היי! ראיתי את "${item.title}" שמסומן כשמור זמנית. אשמח להצטרף לרשימת ההמתנה ולקבל עדכון אם הוא יתפנה 😊`
     : `היי! ראיתי את "${item.title}" בעמוד המכירה שלכם ואני מעוניין/ת 😊 האם הוא עדיין זמין?`;
 
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
