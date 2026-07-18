@@ -1,5 +1,7 @@
 "use strict";
 
+const CARD_SWIPE_MIN_DISTANCE = 44;
+const CARD_SWIPE_AXIS_RATIO = 1.2;
 const createItemCardWithoutGallery = createItemCard;
 
 createItemCard = function createItemCardWithGallery(item) {
@@ -10,12 +12,21 @@ createItemCard = function createItemCardWithGallery(item) {
   const count = imageWrap?.querySelector(".image-count");
   let currentVisual = imageWrap?.firstElementChild;
   let currentIndex = 0;
+  let activePointer = null;
+  let suppressCardClickUntil = 0;
 
   if (!imageWrap || !currentVisual) return card;
 
+  const prepareVisual = (visual) => {
+    if (visual instanceof HTMLImageElement) visual.draggable = false;
+    return visual;
+  };
+
+  prepareVisual(currentVisual);
+
   const showImage = (nextIndex) => {
     currentIndex = (nextIndex + item.images.length) % item.images.length;
-    const nextVisual = createItemVisual(item, currentIndex, "card");
+    const nextVisual = prepareVisual(createItemVisual(item, currentIndex, "card"));
     currentVisual.replaceWith(nextVisual);
     currentVisual = nextVisual;
 
@@ -38,6 +49,65 @@ createItemCard = function createItemCardWithGallery(item) {
 
     return button;
   };
+
+  const cancelSwipe = (event) => {
+    if (!activePointer || event.pointerId !== activePointer.id) return;
+    activePointer = null;
+  };
+
+  imageWrap.addEventListener("pointerdown", (event) => {
+    if (!event.isPrimary || event.button > 0 || event.target.closest(".card-gallery-arrow")) return;
+
+    activePointer = {
+      id: event.pointerId,
+      x: event.clientX,
+      y: event.clientY
+    };
+
+    try {
+      imageWrap.setPointerCapture(event.pointerId);
+    } catch {
+      // Pointer capture is an enhancement; swipe detection still works without it.
+    }
+  });
+
+  imageWrap.addEventListener("pointerup", (event) => {
+    if (!activePointer || event.pointerId !== activePointer.id) return;
+
+    const deltaX = event.clientX - activePointer.x;
+    const deltaY = event.clientY - activePointer.y;
+    activePointer = null;
+
+    try {
+      imageWrap.releasePointerCapture(event.pointerId);
+    } catch {
+      // The pointer may already have been released by the browser.
+    }
+
+    const isHorizontalSwipe =
+      Math.abs(deltaX) >= CARD_SWIPE_MIN_DISTANCE &&
+      Math.abs(deltaX) >= Math.abs(deltaY) * CARD_SWIPE_AXIS_RATIO;
+
+    if (!isHorizontalSwipe) return;
+
+    event.preventDefault();
+    suppressCardClickUntil = performance.now() + 450;
+    showImage(currentIndex + (deltaX < 0 ? 1 : -1));
+  });
+
+  imageWrap.addEventListener("pointercancel", cancelSwipe);
+  imageWrap.addEventListener("lostpointercapture", cancelSwipe);
+  imageWrap.addEventListener("dragstart", (event) => event.preventDefault());
+
+  card.addEventListener(
+    "click",
+    (event) => {
+      if (performance.now() >= suppressCardClickUntil) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    },
+    true
+  );
 
   if (count) count.textContent = `1 / ${item.images.length}`;
 
