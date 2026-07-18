@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""Generate lightweight WebP derivatives for storefront item photos."""
+
+from __future__ import annotations
+
+import io
+from pathlib import Path
+
+from PIL import Image, ImageOps
+
+ROOT = Path(__file__).resolve().parents[1]
+SOURCE_DIR = ROOT / "media" / "items"
+OUTPUT_ROOT = ROOT / "media" / "optimized"
+SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
+VARIANTS = {
+    "card": {"max_edge": 640, "quality": 78},
+    "dialog": {"max_edge": 1280, "quality": 82},
+}
+
+
+def iter_sources() -> list[Path]:
+    if not SOURCE_DIR.exists():
+        return []
+    return sorted(
+        path
+        for path in SOURCE_DIR.rglob("*")
+        if path.is_file() and path.suffix.lower() in SUPPORTED_EXTENSIONS
+    )
+
+
+def output_path(source: Path, variant: str) -> Path:
+    relative = source.relative_to(SOURCE_DIR)
+    return OUTPUT_ROOT / variant / relative.parent / f"{relative.name}.webp"
+
+
+def encode_variant(source: Path, max_edge: int, quality: int) -> bytes:
+    with Image.open(source) as opened:
+        image = ImageOps.exif_transpose(opened)
+        if getattr(image, "is_animated", False):
+            image.seek(0)
+        image.thumbnail((max_edge, max_edge), Image.Resampling.LANCZOS)
+
+        has_alpha = "A" in image.getbands() or "transparency" in image.info
+        image = image.convert("RGBA" if has_alpha else "RGB")
+
+        buffer = io.BytesIO()
+        image.save(
+            buffer,
+            format="WEBP",
+            quality=quality,
+            method=6,
+            exact=has_alpha,
+        )
+        return buffer.getvalue()
+
+
+def write_if_changed(path: Path, content: bytes) -> bool:
+    if path.exists() and path.read_bytes() == content:
+        return False
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(content)
+    return True
+
+
+def remove_stale_outputs(expected: set[Path]) -> int:
+    removed = 0
+    if not OUTPUT_ROOT.exists():
+        return removed
+
+    for path in sorted(OUTPUT_ROOT.rglob("*.webp")):
+        if path not in expected:
+            path.unlink()
+            removed += 1
+
+    for directory in sorted(
+        (path for path in OUTPUT_ROOT.rglob("*") if path.is_dir()),
+        reverse=True,
+    ):
+        try:
+            directory.rmdir()
+        except OSError:
+            pass
+
+    return removed
+
+
+def main() -> None:
+    sources = iter_sources()
+    expected: set[Path] = set()
+    changed = 0
+    original_bytes = 0
+    optimized_bytes = 0
+
+    for source in sources:
+        original_bytes += source.stat().st_size
+        for variant, settings in VARIANTS.items():
+            destination = output_path(source, variant)
+            expected.add(destination)
+            encoded = encode_variant(source, **settings)
+            optimized_bytes += len(encoded)
+            changed += int(write_if_changed(destination, encoded))
+
+    removed = remove_stale_outputs(expected)
+    print(
+        f"Processed {len(sources)} originals into {len(expected)} derivatives; "
+        f"updated {changed}, removed {removed}."
+    )
+    if original_bytes:
+        ratio = optimized_bytes / original_bytes
+        print(
+            f"Originals: {original_bytes / 1_048_576:.1f} MiB; "
+            f"all derivatives: {optimized_bytes / 1_048_576:.1f} MiB "
+            f"({ratio:.0%} of original bytes across both sizes)."
+        )
+
+
+if __name__ == "__main__":
+    main()
