@@ -1,0 +1,47 @@
+.card-gallery-arrow {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  padding: 0 0 2px;
+  color: #fff;
+  background: rgba(32, 36, 33, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(7px);
+  font-size: 1.55rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: background 150ms ease, transform 150ms ease, opacity 150ms ease;
+}
+
+.card-gallery-arrow--previous {
+  left: 9px;
+}
+
+.card-gallery-arrow--next {
+  right: 9px;
+}
+
+.card-gallery-arrow:hover {
+  background: rgba(32, 36, 33, 0.86);
+  transform: translateY(-50%) scale(1.06);
+}
+
+.card-gallery-arrow:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.9);
+  outline-offset: 2px;
+}
+
+@media (max-width: 650px) {
+  .card-gallery-arrow {
+    width: 38px;
+    height: 38px;
+    font-size: 1.7rem;
+  }
+}
