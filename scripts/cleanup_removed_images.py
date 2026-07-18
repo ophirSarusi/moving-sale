@@ -13,7 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ITEMS_FILE = ROOT / "data" / "items.json"
 SOURCE_ROOT = ROOT / "media" / "items"
 OPTIMIZED_ROOT = ROOT / "media" / "optimized"
-OPTIMIZED_VARIANTS = ("card", "dialog")
+OPTIMIZED_VARIANTS = ("thumb", "card", "dialog")
 SOURCE_PREFIX = PurePosixPath("media/items")
 
 
