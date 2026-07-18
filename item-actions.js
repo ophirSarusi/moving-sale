@@ -201,7 +201,6 @@ function enhanceDialog(items, phone) {
   if (!item) return;
 
   updateDialogAvailability(item);
-  updateReservedDialogNote(item);
 
   const button = document.getElementById("dialogWhatsapp");
   if (!button) return;
@@ -226,25 +225,6 @@ function enhanceDialog(items, phone) {
   if (button.getAttribute("href") !== expectedHref) button.setAttribute("href", expectedHref);
   if (button.textContent !== expectedLabel) button.textContent = expectedLabel;
   button.setAttribute("aria-label", `פתיחת וואטסאפ לגבי ${item.title}`);
-}
-
-function updateReservedDialogNote(item) {
-  const details = document.querySelector(".dialog-details");
-  if (!details) return;
-
-  let note = details.querySelector(".reserved-waitlist-note");
-  if (item.status !== "reserved") {
-    note?.remove();
-    return;
-  }
-
-  if (!note) {
-    note = document.createElement("p");
-    note.className = "reserved-waitlist-note";
-    details.querySelector(".dialog-description")?.insertAdjacentElement("afterend", note);
-  }
-
-  note.textContent = "הפריט שמור כרגע. אפשר להשאיר הודעה ונעדכן אם הוא יתפנה.";
 }
 
 function updateDialogAvailability(item) {

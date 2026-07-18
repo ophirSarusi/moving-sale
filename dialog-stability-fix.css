@@ -1,0 +1,28 @@
+/* Prevent galleries with several thumbnails from giving the dialog an
+   intrinsic width larger than the viewport. */
+.item-dialog {
+  max-inline-size: calc(100vw - 28px);
+  overflow-x: hidden;
+}
+
+.dialog-layout,
+.dialog-gallery,
+.dialog-details,
+.dialog-gallery__stage,
+.dialog-gallery__image {
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+.dialog-thumbnails {
+  inline-size: 100%;
+  min-inline-size: 0;
+  max-inline-size: 100%;
+}
+
+@media (max-width: 650px) {
+  .item-dialog {
+    inline-size: 100%;
+    max-inline-size: 100vw;
+  }
+}
