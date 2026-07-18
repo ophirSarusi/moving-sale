@@ -76,6 +76,8 @@ content:
                   label: Office
                 - name: "תאורה ודקורציה"
                   label: Lighting & decor
+                - name: "מרפסת/חצר"
+                  label: Balcony & yard
                 - name: "אחר"
                   label: Other
           - name: status
