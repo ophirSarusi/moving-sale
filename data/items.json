@@ -195,6 +195,22 @@
       "condition": "כמו חדש",
       "dimensions": "120×60",
       "negotiable": false
+    },
+    {
+      "id": "53da1b5f-7a60-4915-b7f0-902df9333d7a",
+      "title": "כסא משרדי ד\"ר גב",
+      "images": [
+        "/media/items/144214-1.jpg",
+        "/media/items/144215-1.jpg",
+        "/media/items/144211.jpg"
+      ],
+      "price": 550,
+      "originalPrice": 1190,
+      "category": "משרד",
+      "status": "available",
+      "description": "כסא משרדי אורתופדי של ד\"ר גב  דגם אקווה מרין שחור בן 3.5 בלבד",
+      "condition": "מצב מצוין",
+      "negotiable": false
     }
   ]
 }
