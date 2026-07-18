@@ -2,21 +2,11 @@
 
 const OPTIMIZED_IMAGE_MANIFEST = "media/optimized/manifest.json";
 let optimizedImages = Object.create(null);
-
-// app.js registers initialize() before this deferred script runs. Replace that
-// listener with a small wrapper so image rendering waits for the manifest.
-const initializeStorefront = initialize;
-window.removeEventListener("DOMContentLoaded", initialize);
-window.addEventListener("DOMContentLoaded", async () => {
-  await loadOptimizedImageManifest();
-  await initializeStorefront();
-});
+const optimizedImageManifestPromise = loadOptimizedImageManifest();
 
 async function loadOptimizedImageManifest() {
   try {
-    const response = await fetch(resolveAssetPath(OPTIMIZED_IMAGE_MANIFEST), {
-      cache: "no-store"
-    });
+    const response = await fetch(resolveAssetPath(OPTIMIZED_IMAGE_MANIFEST));
     if (!response.ok) return;
 
     const payload = await response.json();
@@ -58,28 +48,51 @@ function configureImageFallback(image, optimizedPath, originalPath, title) {
   });
 }
 
+async function assignImageSource(image, originalPath, variants, title) {
+  await optimizedImageManifestPromise;
+  if (!image.isConnected) return;
+
+  const optimizedPath = variants
+    .map((variant) => getOptimizedImagePath(originalPath, variant))
+    .find(Boolean) || "";
+
+  configureImageFallback(image, optimizedPath, originalPath, title);
+  image.src = resolveAssetPath(optimizedPath || originalPath);
+}
+
 createItemVisual = function createOptimizedItemVisual(item, imageIndex, variant = "card") {
   const originalPath = item.images[imageIndex];
   if (!originalPath) return createPlaceholder(item.title);
 
-  const optimizedPath = getOptimizedImagePath(originalPath, variant);
   const image = document.createElement("img");
-  image.src = resolveAssetPath(optimizedPath || originalPath);
   image.alt = item.title;
   image.loading = variant === "dialog" ? "eager" : "lazy";
   image.decoding = "async";
   if (variant === "dialog") image.fetchPriority = "high";
-  configureImageFallback(image, optimizedPath, originalPath, item.title);
+
+  assignImageSource(image, originalPath, [variant], item.title);
   return image;
+};
+
+const renderItemsStorefront = renderItems;
+renderItems = function renderItemsWithPriority() {
+  renderItemsStorefront();
+
+  const cardImages = elements.itemsGrid.querySelectorAll(".item-card__image img");
+  cardImages.forEach((image, index) => {
+    if (index >= 3) return;
+    image.loading = "eager";
+    if (index === 0) image.fetchPriority = "high";
+  });
 };
 
 renderDialogImage = function renderOptimizedDialogImage() {
   const item = state.selectedItem;
   if (!item) return;
 
-  elements.dialogImageStage.replaceChildren(
-    createItemVisual(item, state.imageIndex, "dialog")
-  );
+  const currentIndex = state.imageIndex;
+  const mainImage = createItemVisual(item, currentIndex, "dialog");
+  elements.dialogImageStage.replaceChildren(mainImage);
   elements.dialogThumbnails.replaceChildren();
 
   const hasMultiple = item.images.length > 1;
@@ -91,15 +104,14 @@ renderDialogImage = function renderOptimizedDialogImage() {
     button.type = "button";
     button.className = "thumbnail";
     button.setAttribute("aria-label", `מעבר לתמונה ${index + 1}`);
-    button.setAttribute("aria-current", String(index === state.imageIndex));
+    button.setAttribute("aria-current", String(index === currentIndex));
 
-    const optimizedPath = getOptimizedImagePath(path, "card");
     const image = document.createElement("img");
-    image.src = resolveAssetPath(optimizedPath || path);
     image.alt = "";
     image.loading = "lazy";
     image.decoding = "async";
-    configureImageFallback(image, optimizedPath, path, item.title);
+    image.fetchPriority = "low";
+    assignImageSource(image, path, ["thumb", "card"], item.title);
 
     button.appendChild(image);
     button.addEventListener("click", () => {
@@ -109,18 +121,40 @@ renderDialogImage = function renderOptimizedDialogImage() {
     elements.dialogThumbnails.appendChild(button);
   });
 
-  prefetchNextDialogImage(item);
+  if (mainImage instanceof HTMLImageElement) {
+    mainImage.addEventListener(
+      "load",
+      () => scheduleNextDialogImagePrefetch(item, currentIndex),
+      { once: true }
+    );
+  }
 };
 
-function prefetchNextDialogImage(item) {
+function scheduleNextDialogImagePrefetch(item, currentIndex) {
+  const run = () => {
+    if (state.selectedItem !== item || state.imageIndex !== currentIndex) return;
+    prefetchNextDialogImage(item, currentIndex);
+  };
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(run, { timeout: 1200 });
+  } else {
+    window.setTimeout(run, 300);
+  }
+}
+
+async function prefetchNextDialogImage(item, currentIndex) {
   if (item.images.length < 2) return;
 
-  const nextIndex = (state.imageIndex + 1) % item.images.length;
-  const originalPath = item.images[nextIndex];
-  const optimizedPath = getOptimizedImagePath(originalPath, "dialog");
+  await optimizedImageManifestPromise;
+  if (state.selectedItem !== item || state.imageIndex !== currentIndex) return;
+
+  const nextIndex = (currentIndex + 1) % item.images.length;
+  const optimizedPath = getOptimizedImagePath(item.images[nextIndex], "dialog");
   if (!optimizedPath) return;
 
   const preload = new Image();
   preload.decoding = "async";
+  preload.fetchPriority = "low";
   preload.src = resolveAssetPath(optimizedPath);
 }
