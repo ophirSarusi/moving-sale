@@ -1,0 +1,141 @@
+{
+  "images": {
+    "media/items/144187.jpg": {
+      "card": "media/optimized/card/144187.jpg.webp",
+      "dialog": "media/optimized/dialog/144187.jpg.webp"
+    },
+    "media/items/144189-1.jpg": {
+      "card": "media/optimized/card/144189-1.jpg.webp",
+      "dialog": "media/optimized/dialog/144189-1.jpg.webp"
+    },
+    "media/items/144189.jpg": {
+      "card": "media/optimized/card/144189.jpg.webp",
+      "dialog": "media/optimized/dialog/144189.jpg.webp"
+    },
+    "media/items/144190.jpg": {
+      "card": "media/optimized/card/144190.jpg.webp",
+      "dialog": "media/optimized/dialog/144190.jpg.webp"
+    },
+    "media/items/144196.jpg": {
+      "card": "media/optimized/card/144196.jpg.webp",
+      "dialog": "media/optimized/dialog/144196.jpg.webp"
+    },
+    "media/items/144203.jpg": {
+      "card": "media/optimized/card/144203.jpg.webp",
+      "dialog": "media/optimized/dialog/144203.jpg.webp"
+    },
+    "media/items/144204.jpg": {
+      "card": "media/optimized/card/144204.jpg.webp",
+      "dialog": "media/optimized/dialog/144204.jpg.webp"
+    },
+    "media/items/144211.jpg": {
+      "card": "media/optimized/card/144211.jpg.webp",
+      "dialog": "media/optimized/dialog/144211.jpg.webp"
+    },
+    "media/items/144212.jpg": {
+      "card": "media/optimized/card/144212.jpg.webp",
+      "dialog": "media/optimized/dialog/144212.jpg.webp"
+    },
+    "media/items/144213.jpg": {
+      "card": "media/optimized/card/144213.jpg.webp",
+      "dialog": "media/optimized/dialog/144213.jpg.webp"
+    },
+    "media/items/144214-1.jpg": {
+      "card": "media/optimized/card/144214-1.jpg.webp",
+      "dialog": "media/optimized/dialog/144214-1.jpg.webp"
+    },
+    "media/items/144214.jpg": {
+      "card": "media/optimized/card/144214.jpg.webp",
+      "dialog": "media/optimized/dialog/144214.jpg.webp"
+    },
+    "media/items/144215-1.jpg": {
+      "card": "media/optimized/card/144215-1.jpg.webp",
+      "dialog": "media/optimized/dialog/144215-1.jpg.webp"
+    },
+    "media/items/144215.jpg": {
+      "card": "media/optimized/card/144215.jpg.webp",
+      "dialog": "media/optimized/dialog/144215.jpg.webp"
+    },
+    "media/items/1783874813101.jpg": {
+      "card": "media/optimized/card/1783874813101.jpg.webp",
+      "dialog": "media/optimized/dialog/1783874813101.jpg.webp"
+    },
+    "media/items/20260531153212.jpg": {
+      "card": "media/optimized/card/20260531153212.jpg.webp",
+      "dialog": "media/optimized/dialog/20260531153212.jpg.webp"
+    },
+    "media/items/20260531153223.jpg": {
+      "card": "media/optimized/card/20260531153223.jpg.webp",
+      "dialog": "media/optimized/dialog/20260531153223.jpg.webp"
+    },
+    "media/items/20260612105708.jpg": {
+      "card": "media/optimized/card/20260612105708.jpg.webp",
+      "dialog": "media/optimized/dialog/20260612105708.jpg.webp"
+    },
+    "media/items/20260612112304.jpg": {
+      "card": "media/optimized/card/20260612112304.jpg.webp",
+      "dialog": "media/optimized/dialog/20260612112304.jpg.webp"
+    },
+    "media/items/20260612112326.jpg": {
+      "card": "media/optimized/card/20260612112326.jpg.webp",
+      "dialog": "media/optimized/dialog/20260612112326.jpg.webp"
+    },
+    "media/items/20260612130742.jpg": {
+      "card": "media/optimized/card/20260612130742.jpg.webp",
+      "dialog": "media/optimized/dialog/20260612130742.jpg.webp"
+    },
+    "media/items/20260612130758.jpg": {
+      "card": "media/optimized/card/20260612130758.jpg.webp",
+      "dialog": "media/optimized/dialog/20260612130758.jpg.webp"
+    },
+    "media/items/70529774316979448747343425531057281975362979n.jpg": {
+      "card": "media/optimized/card/70529774316979448747343425531057281975362979n.jpg.webp",
+      "dialog": "media/optimized/dialog/70529774316979448747343425531057281975362979n.jpg.webp"
+    },
+    "media/items/70585478617342245746051661843091466792222361n.jpg": {
+      "card": "media/optimized/card/70585478617342245746051661843091466792222361n.jpg.webp",
+      "dialog": "media/optimized/dialog/70585478617342245746051661843091466792222361n.jpg.webp"
+    },
+    "media/items/70647382420505179255411692975455031588568086n.jpg": {
+      "card": "media/optimized/card/70647382420505179255411692975455031588568086n.jpg.webp",
+      "dialog": "media/optimized/dialog/70647382420505179255411692975455031588568086n.jpg.webp"
+    },
+    "media/items/fbimg1780322057237.jpg": {
+      "card": "media/optimized/card/fbimg1780322057237.jpg.webp",
+      "dialog": "media/optimized/dialog/fbimg1780322057237.jpg.webp"
+    },
+    "media/items/file00000000a1687246a245e1881568df26.png": {
+      "card": "media/optimized/card/file00000000a1687246a245e1881568df26.png.webp",
+      "dialog": "media/optimized/dialog/file00000000a1687246a245e1881568df26.png.webp"
+    },
+    "media/items/img-20250817-wa0046.jpg": {
+      "card": "media/optimized/card/img-20250817-wa0046.jpg.webp",
+      "dialog": "media/optimized/dialog/img-20250817-wa0046.jpg.webp"
+    },
+    "media/items/img-20260710-wa0019.jpeg": {
+      "card": "media/optimized/card/img-20260710-wa0019.jpeg.webp",
+      "dialog": "media/optimized/dialog/img-20260710-wa0019.jpeg.webp"
+    },
+    "media/items/rug-250.jpg": {
+      "card": "media/optimized/card/rug-250.jpg.webp",
+      "dialog": "media/optimized/dialog/rug-250.jpg.webp"
+    },
+    "media/items/whatsapp-image-2026-07-12-at-214426.jpeg": {
+      "card": "media/optimized/card/whatsapp-image-2026-07-12-at-214426.jpeg.webp",
+      "dialog": "media/optimized/dialog/whatsapp-image-2026-07-12-at-214426.jpeg.webp"
+    },
+    "media/items/whatsapp-image-2026-07-13-at-094200.jpeg": {
+      "card": "media/optimized/card/whatsapp-image-2026-07-13-at-094200.jpeg.webp",
+      "dialog": "media/optimized/dialog/whatsapp-image-2026-07-13-at-094200.jpeg.webp"
+    },
+    "media/items/whatsapp-image-2026-07-13-at-094307.jpeg": {
+      "card": "media/optimized/card/whatsapp-image-2026-07-13-at-094307.jpeg.webp",
+      "dialog": "media/optimized/dialog/whatsapp-image-2026-07-13-at-094307.jpeg.webp"
+    },
+    "media/items/whatsapp-image-2026-07-13-at-094342.jpeg": {
+      "card": "media/optimized/card/whatsapp-image-2026-07-13-at-094342.jpeg.webp",
+      "dialog": "media/optimized/dialog/whatsapp-image-2026-07-13-at-094342.jpeg.webp"
+    }
+  },
+  "version": 1
+}
