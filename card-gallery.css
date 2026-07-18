@@ -22,6 +22,8 @@
   border-radius: 50%;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
   backdrop-filter: blur(7px);
+  direction: ltr;
+  unicode-bidi: isolate;
   font-size: 1.55rem;
   line-height: 1;
   transform: translateY(-50%);
