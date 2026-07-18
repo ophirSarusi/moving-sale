@@ -15,6 +15,7 @@ OUTPUT_ROOT = ROOT / "media" / "optimized"
 MANIFEST_PATH = OUTPUT_ROOT / "manifest.json"
 SUPPORTED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
 VARIANTS = {
+    "thumb": {"max_edge": 240, "quality": 72},
     "card": {"max_edge": 640, "quality": 78},
     "dialog": {"max_edge": 1280, "quality": 82},
 }
@@ -147,7 +148,7 @@ def main() -> None:
         print(
             f"Originals: {original_bytes / 1_048_576:.1f} MiB; "
             f"all derivatives: {optimized_bytes / 1_048_576:.1f} MiB "
-            f"({ratio:.0%} of original bytes across both sizes)."
+            f"({ratio:.0%} of original bytes across all sizes)."
         )
 
 
