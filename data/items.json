@@ -160,6 +160,22 @@
       "description": "מצלמת דרך לרכב קדמית ואחורית של purecinema כולל כרטיס זכרון.\n\nהתקבלה במתנה ומיולם לא נעשה בה שממוש. הכל עדיין עטוף ובאריזה המקורית. \n\nנמכרת בחצי מהמחיר של חדש בזאפ.",
       "condition": "חדש באריזה",
       "negotiable": false
+    },
+    {
+      "id": "41c48209-d8cd-4ce6-94e0-0df5909e2f55",
+      "title": "מנגל גז למרפסת/גינה של אמגזית",
+      "images": [
+        "/media/items/144204.jpg",
+        "/media/items/144189.jpg",
+        "/media/items/144196.jpg"
+      ],
+      "price": 500,
+      "originalPrice": 1200,
+      "category": "מוצרי חשמל",
+      "status": "available",
+      "description": "מנגל גז של אמגזית נקנה חדש לפני כ-3 שנים",
+      "condition": "מצב שמיש",
+      "negotiable": true
     }
   ]
 }
