@@ -100,14 +100,10 @@ def delete_removed_reference(reference: PurePosixPath) -> list[Path]:
         deleted.append(source_path)
 
     for variant in OPTIMIZED_VARIANTS:
-        derivative = (
-            OPTIMIZED_ROOT
-            / variant
-            / Path(*relative_source.parent.parts)
-            / f"{relative_source.name}.webp"
-        )
-        if remove_file(derivative):
-            deleted.append(derivative)
+        variant_directory = OPTIMIZED_ROOT / variant / Path(*relative_source.parent.parts)
+        for derivative in variant_directory.glob(f"{relative_source.name}.*"):
+            if derivative.is_file() and remove_file(derivative):
+                deleted.append(derivative)
 
     return deleted
 
