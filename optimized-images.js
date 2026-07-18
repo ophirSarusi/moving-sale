@@ -1,20 +1,48 @@
 "use strict";
 
-const OPTIMIZED_IMAGE_PREFIXES = {
-  card: "media/optimized/card/",
-  dialog: "media/optimized/dialog/"
-};
+const OPTIMIZED_IMAGE_MANIFEST = "media/optimized/manifest.json";
+let optimizedImages = Object.create(null);
 
-function getOptimizedImagePath(path, variant) {
+// app.js registers initialize() before this deferred script runs. Replace that
+// listener with a small wrapper so image rendering waits for the manifest.
+const initializeStorefront = initialize;
+window.removeEventListener("DOMContentLoaded", initialize);
+window.addEventListener("DOMContentLoaded", async () => {
+  await loadOptimizedImageManifest();
+  await initializeStorefront();
+});
+
+async function loadOptimizedImageManifest() {
+  try {
+    const response = await fetch(resolveAssetPath(OPTIMIZED_IMAGE_MANIFEST), {
+      cache: "no-store"
+    });
+    if (!response.ok) return;
+
+    const payload = await response.json();
+    if (payload && payload.images && typeof payload.images === "object") {
+      optimizedImages = payload.images;
+    }
+  } catch (error) {
+    console.warn("Optimized image manifest is unavailable; using originals.", error);
+  }
+}
+
+function normalizeOriginalImagePath(path) {
   const value = String(path || "").trim();
   if (!value || /^(https?:|data:|blob:)/i.test(value)) return "";
 
   const clean = value.replace(/^\.\//, "").replace(/^\/+/, "");
-  const sourcePrefix = "media/items/";
-  const optimizedPrefix = OPTIMIZED_IMAGE_PREFIXES[variant];
-  if (!optimizedPrefix || !clean.startsWith(sourcePrefix)) return "";
+  return clean.startsWith("media/items/") ? clean : "";
+}
 
-  return `${optimizedPrefix}${clean.slice(sourcePrefix.length)}.webp`;
+function getOptimizedImagePath(path, variant) {
+  const originalPath = normalizeOriginalImagePath(path);
+  if (!originalPath) return "";
+
+  const entry = optimizedImages[originalPath];
+  const optimizedPath = entry && typeof entry === "object" ? entry[variant] : "";
+  return typeof optimizedPath === "string" ? optimizedPath : "";
 }
 
 function configureImageFallback(image, optimizedPath, originalPath, title) {
@@ -90,14 +118,9 @@ function prefetchNextDialogImage(item) {
   const nextIndex = (state.imageIndex + 1) % item.images.length;
   const originalPath = item.images[nextIndex];
   const optimizedPath = getOptimizedImagePath(originalPath, "dialog");
-  const preload = new Image();
-  let usingOptimized = Boolean(optimizedPath);
+  if (!optimizedPath) return;
 
+  const preload = new Image();
   preload.decoding = "async";
-  preload.addEventListener("error", () => {
-    if (!usingOptimized) return;
-    usingOptimized = false;
-    preload.src = resolveAssetPath(originalPath);
-  });
-  preload.src = resolveAssetPath(optimizedPath || originalPath);
+  preload.src = resolveAssetPath(optimizedPath);
 }
