@@ -17,6 +17,57 @@
       "negotiable": true
     },
     {
+      "id": "41c48209-d8cd-4ce6-94e0-0df5909e2f55",
+      "title": "מנגל גז למרפסת/גינה של אמגזית",
+      "images": [
+        "/media/items/144190.jpg",
+        "/media/items/144189.jpg",
+        "/media/items/144204.jpg",
+        "/media/items/144187.jpg",
+        "/media/items/144196.jpg",
+        "/media/items/144203.jpg"
+      ],
+      "price": 500,
+      "originalPrice": 1200,
+      "category": "מוצרי חשמל",
+      "status": "available",
+      "description": "מנגל גז 4 להבות + כירת צד של אמגזית נקנה חדש לפני כ-3 שנים. \n\n)לא כולל מיכל גז(",
+      "condition": "מצב שמיש",
+      "negotiable": true
+    },
+    {
+      "id": "5aa6b9e0-ed7f-41a4-85cf-140a972212a9",
+      "title": "שולחן מתכוונן חשמלי של twins design",
+      "images": [
+        "/media/items/144212.jpg",
+        "/media/items/144213.jpg"
+      ],
+      "price": 950,
+      "originalPrice": 1548,
+      "category": "משרד",
+      "status": "available",
+      "description": "שולחן עמידה/ישיבה מתכוונן חשמלי דגם \"דולב\" גודל 120/60 צבע לבן. מושלם למי שעובד מהבית אפילו כמה ימים בשבוע.\n\nנרכש מחברת twins design דרך הייטקזון לפני כ3.5 שנים - עדיין באחריות עד נובמבר 2027!!\n\nכמו חדש, ללא שריטות או מכות, הוחלף שלט לפני כשנה במסגרת האחריות.\n\nניתן לרכוש בנפרד גם את הכסא שבתמונה",
+      "condition": "כמו חדש",
+      "dimensions": "120×60",
+      "negotiable": false
+    },
+    {
+      "id": "53da1b5f-7a60-4915-b7f0-902df9333d7a",
+      "title": "כסא משרדי ד\"ר גב",
+      "images": [
+        "/media/items/144214-1.jpg",
+        "/media/items/144215-1.jpg",
+        "/media/items/144211.jpg"
+      ],
+      "price": 550,
+      "originalPrice": 1190,
+      "category": "משרד",
+      "status": "available",
+      "description": "כסא משרדי אורתופדי של ד\"ר גב  דגם אקווה מרין שחור בן 3.5 בלבד",
+      "condition": "מצב מצוין",
+      "negotiable": false
+    },
+    {
       "id": "998dc767-edfe-42de-b0fd-a055a5eb1f33",
       "title": "שטיח בגוון שיבולת שועל",
       "images": [
@@ -118,6 +169,19 @@
       "negotiable": false
     },
     {
+      "id": "a8a5adc3-71e3-43c8-a828-88ea042fe894",
+      "title": "פלאש חיצוני YN650III של yongnuo",
+      "images": [
+        "/media/items/file00000000a1687246a245e1881568df26.png"
+      ],
+      "price": 180,
+      "category": "אחר",
+      "status": "sold",
+      "description": "פלאש חיצוני YN650III של yongnuo.\n\nנקנה חדש בהתלהבות אחרי קורס צילום עם תאורה אבל בפועל נעשה בו שימוש פעמיים.\n\nבמצב מעולה כמובן, מגיע עם פילטרים צבעוניים בעשרות צבעים.",
+      "condition": "כמו חדש",
+      "negotiable": false
+    },
+    {
       "id": "498ed608-f2ed-4823-8717-f69b02724a16",
       "title": "תאורת סטודיו LED של Nanlite 40",
       "images": [
@@ -134,19 +198,6 @@
       "negotiable": false
     },
     {
-      "id": "a8a5adc3-71e3-43c8-a828-88ea042fe894",
-      "title": "פלאש חיצוני YN650III של yongnuo",
-      "images": [
-        "/media/items/file00000000a1687246a245e1881568df26.png"
-      ],
-      "price": 180,
-      "category": "אחר",
-      "status": "sold",
-      "description": "פלאש חיצוני YN650III של yongnuo.\n\nנקנה חדש בהתלהבות אחרי קורס צילום עם תאורה אבל בפועל נעשה בו שימוש פעמיים.\n\nבמצב מעולה כמובן, מגיע עם פילטרים צבעוניים בעשרות צבעים.",
-      "condition": "כמו חדש",
-      "negotiable": false
-    },
-    {
       "id": "873540f6-57e1-40f7-9f4f-af7bb5ad6eba",
       "title": "מצלמת דרך לרכב",
       "images": [
@@ -159,57 +210,6 @@
       "status": "available",
       "description": "מצלמת דרך לרכב קדמית ואחורית של purecinema כולל כרטיס זכרון.\n\nהתקבלה במתנה ומיולם לא נעשה בה שממוש. הכל עדיין עטוף ובאריזה המקורית. \n\nנמכרת בחצי מהמחיר של חדש בזאפ.",
       "condition": "חדש באריזה",
-      "negotiable": false
-    },
-    {
-      "id": "41c48209-d8cd-4ce6-94e0-0df5909e2f55",
-      "title": "מנגל גז למרפסת/גינה של אמגזית",
-      "images": [
-        "/media/items/144204.jpg",
-        "/media/items/144189.jpg",
-        "/media/items/144196.jpg",
-        "/media/items/144187.jpg",
-        "/media/items/144190.jpg",
-        "/media/items/144203.jpg"
-      ],
-      "price": 500,
-      "originalPrice": 1200,
-      "category": "מוצרי חשמל",
-      "status": "available",
-      "description": "מנגל גז 4 להבות + כירת צד של אמגזית נקנה חדש לפני כ-3 שנים. \n\n)לא כולל מיכל גז(",
-      "condition": "מצב שמיש",
-      "negotiable": true
-    },
-    {
-      "id": "5aa6b9e0-ed7f-41a4-85cf-140a972212a9",
-      "title": "שולחן מתכוונן חשמלי של twins design",
-      "images": [
-        "/media/items/144212.jpg",
-        "/media/items/144213.jpg"
-      ],
-      "price": 950,
-      "originalPrice": 1548,
-      "category": "משרד",
-      "status": "available",
-      "description": "שולחן עמידה/ישיבה מתכוונן חשמלי דגם \"דולב\" גודל 120/60 צבע לבן. מושלם למי שעובד מהבית אפילו כמה ימים בשבוע.\n\nנרכש מחברת twins design דרך הייטקזון לפני כ3.5 שנים - עדיין באחריות עד נובמבר 2027!!\n\nכמו חדש, ללא שריטות או מכות, הוחלף שלט לפני כשנה במסגרת האחריות.\n\nניתן לרכוש בנפרד גם את הכסא שבתמונה",
-      "condition": "כמו חדש",
-      "dimensions": "120×60",
-      "negotiable": false
-    },
-    {
-      "id": "53da1b5f-7a60-4915-b7f0-902df9333d7a",
-      "title": "כסא משרדי ד\"ר גב",
-      "images": [
-        "/media/items/144214-1.jpg",
-        "/media/items/144215-1.jpg",
-        "/media/items/144211.jpg"
-      ],
-      "price": 550,
-      "originalPrice": 1190,
-      "category": "משרד",
-      "status": "available",
-      "description": "כסא משרדי אורתופדי של ד\"ר גב  דגם אקווה מרין שחור בן 3.5 בלבד",
-      "condition": "מצב מצוין",
       "negotiable": false
     }
   ]
