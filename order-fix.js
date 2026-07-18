@@ -1,5 +1,11 @@
 "use strict";
 
+// Keep the visible toggle and the internal filter state aligned before the
+// delayed storefront initializer renders the catalog.
+state.availableOnly = false;
+const availableOnlyToggle = document.getElementById("availableOnlyToggle");
+if (availableOnlyToggle) availableOnlyToggle.checked = false;
+
 // Preserve the exact order stored by Pages CMS. Array.filter keeps the
 // relative order of matching items, so searches and category filters do too.
 getFilteredItems = function getFilteredItemsInCmsOrder() {
