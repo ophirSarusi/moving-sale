@@ -1,6 +1,7 @@
 "use strict";
 
 const OPTIMIZED_IMAGE_MANIFEST = "media/optimized/manifest.json";
+const REQUIRED_OPTIMIZED_IMAGE_MANIFEST_VERSION = 2;
 let optimizedImages = Object.create(null);
 
 // app.js registers initialize() before this deferred script runs. Replace that
@@ -20,7 +21,11 @@ async function loadOptimizedImageManifest() {
     if (!response.ok) return;
 
     const payload = await response.json();
-    if (payload && payload.images && typeof payload.images === "object") {
+    if (
+      Number(payload?.version) >= REQUIRED_OPTIMIZED_IMAGE_MANIFEST_VERSION &&
+      payload.images &&
+      typeof payload.images === "object"
+    ) {
       optimizedImages = payload.images;
     }
   } catch (error) {
