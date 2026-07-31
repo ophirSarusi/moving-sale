@@ -33,6 +33,23 @@
       "negotiable": false
     },
     {
+      "id": "9030a741-28d3-40c2-9dde-f9e2cafbba3b",
+      "title": "סריג עץ ענק למרפסת/חצר",
+      "images": [
+        "/media/items/whatsapp-image-2026-07-31-at-105918.jpeg",
+        "/media/items/whatsapp-image-2026-07-31-at-105919-1.jpeg",
+        "/media/items/whatsapp-image-2026-07-31-at-105919.jpeg"
+      ],
+      "price": 150,
+      "originalPrice": 350,
+      "category": "מרפסת/חצר",
+      "status": "available",
+      "description": "סריג עץ בגודל 180*90 כל יחידה, מושלם להצללה או לצמח מטפס במרפסת או בגינה.\nיש 3 יחידות, המחיר הוא לאחת",
+      "condition": "מצב טוב מאוד",
+      "dimensions": "180x90",
+      "negotiable": false
+    },
+    {
       "id": "2c87eec3-407d-4eca-895d-fb0893079cc6",
       "title": "משטח בוצ׳ר מעץ מלא",
       "images": [
@@ -211,23 +228,6 @@
       "status": "sold",
       "description": "סט ישיבה לגינה/מרפסת מסדרת NÄMMARÖ במצב מעולה.\n3 X כסא רגיל (בסיס + משענת + כריות) = 300 ש\"ח. \n3 X כסא פינתי (בסיס + 2 משענות + כריות) = 350 ש\"ח. \n1 X ספסל = 250 ש\"ח (מחיר רגיל חדש בחנות 345 ש\"ח).\nהמחיר למי שיקנה הכל יחד = 1950 בלבד (מחיר של סט כזה חדש הוא מעל 5000 ש\"ח).",
       "negotiable": true
-    },
-    {
-      "id": "9030a741-28d3-40c2-9dde-f9e2cafbba3b",
-      "title": "סריג עץ ענק למרפסת/חצר",
-      "images": [
-        "/media/items/whatsapp-image-2026-07-31-at-105918.jpeg",
-        "/media/items/whatsapp-image-2026-07-31-at-105919-1.jpeg",
-        "/media/items/whatsapp-image-2026-07-31-at-105919.jpeg"
-      ],
-      "price": 150,
-      "originalPrice": 350,
-      "category": "מרפסת/חצר",
-      "status": "available",
-      "description": "סריג עץ בגודל 180*90 כל יחידה, מושלם להצללה או לצמח מטפס במרפסת או בגינה.\nיש 3 יחידות, המחיר הוא לאחת",
-      "condition": "מצב טוב מאוד",
-      "dimensions": "180x90",
-      "negotiable": false
     }
   ]
 }
